@@ -1,7 +1,7 @@
 @echo off
 TASKKILL /F /IM node.exe
 cls
-set BUILD_VER=Alpha 1.0.0
+set BUILD_VER=Alpha 1.0.2
 title Animium %BUILD_VER%
 echo [INFO] Animium %BUILD_VER%
 echo [WARN] This is a BASE of Animium. There might not be most features.
