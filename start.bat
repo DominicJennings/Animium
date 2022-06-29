@@ -9,5 +9,6 @@ echo [WARN] Please install Node.js before running the program.
 echo [INFO] Running NPM install...
 npm install
 echo [INFO] Open browser.bat and navigate to http://localhost/ .
-call npm start
+npm start
+pause
 
