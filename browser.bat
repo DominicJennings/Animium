@@ -1,4 +1,2 @@
 @echo off
-start browser\chrome.exe localhost
-echo Browser started.
-exit
+start browser\chrome.exe http://localhost/
