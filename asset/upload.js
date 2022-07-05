@@ -27,7 +27,12 @@ module.exports = function (req, res, url) {
 						mode = "music";
 						break;
                                         case "vid":
-						mode = "video";
+                                                if (process.env.NODE_USER == "dev") {
+						        mode = "video";
+                                                } else {
+                                                        mode = "dontimport";
+                                                        console.log('Your video will not be uploaded due to the system being in development.');
+                                                }
 						break;
 				}
 

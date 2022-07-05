@@ -18,7 +18,11 @@ module.exports = {
                          }
                          case "video": { 
                                  suffix = `-${mode}.${ext}`;
-                                 return caché.newVideo(buffer, mId, "", suffix); 
+                                 if (mode == "dontimport") {
+                                         console.log;
+                                 } else {
+                                         return caché.newVideo(buffer, mId, "", suffix); 
+                                 }
                                  break;
                          }
                          default: {
