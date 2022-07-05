@@ -1,9 +1,5 @@
 {
-	"OLD_SWF_URL": "https://GoAnimate-Wrapper.github.io/GoAnimate-Assets/animation/414827163ad4eb60",
-	"OLD_STORE_URL": "https://GoAnimate-Wrapper.github.io/GoAnimate-Assets/store/3a981f5cb2739137",
-	"OLD_CLIENT_URL": "https://GoAnimate-Wrapper.github.io/GoAnimate-Assets/static/ad44370a650793d9",
-	
-	"SWF_URL": "https://cdn.anistick.com/server/animation",
-	"STORE_URL": "https://cdn.anistick.com/server/store",
-	"CLIENT_URL": "https://cdn.anistick.com/server/static"
+	"SWF_URL": "https://josephanimate2021.github.io/Animium-Swfs",
+	"STORE_URL": "https://josephanimate2021.github.io/store/3a981f5cb2739137",
+	"CLIENT_URL": "https://josephanimate2021.github.io/static/55910a7cd204c37c"
 }
