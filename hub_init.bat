@@ -9,4 +9,5 @@ npm install
 exit
 :noinst
 No Node.js installation needed.
-call npm start
+start npm start
+exit
