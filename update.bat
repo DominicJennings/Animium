@@ -2,8 +2,7 @@
 ::    Anistick Animium Updater    ::
 ::     Made by Kia and Joseph     ::
 ::      https://anistick.com      ::
-if not exist git goto nogit
-if exist git goto yesgit
+if not exist git ( goto nogit ) else ( goto yesgit )
 :nogit
 echo Git doesn't exist. Please download Animium from the Animium GitHub repository.
 explorer https://github.com/KiaWeb/Animium
