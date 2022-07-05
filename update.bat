@@ -12,5 +12,4 @@ if exist .git ( goto yesdotgit ) else ( goto nodotgit )
 :yesdotgit
 git pull || git stash && git pull || goto noworkingupdate
 :nodotgit
-echo There is no .git directory. Please download Animium from the Animium GitHub repository.
-explorer https://github.com/KiaWeb/Animium
+echo There is no .git directory. Please download Animium using the installer. https://github.com/josephanimate2021/Animium-Installer
