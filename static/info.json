@@ -14,13 +14,6 @@
 			"statusCode": 302,
 			"content": ""
 		},
-		"/html/list.html": {
-			"headers": {
-				"Location": "pages/html/list.html"
-			},
-			"statusCode": 302,
-			"content": ""
-		},
 		"/goapi/getAssetTags": {
 			"headers": {
 				"Content-Type": "application/json"
