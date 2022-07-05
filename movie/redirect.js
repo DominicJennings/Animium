@@ -1,9 +1,3 @@
-const http = require("http");
-const defaultTypes = {
-	family: "adam",
-	anime: "guy",
-};
-
 /**
  * @param {http.IncomingMessage} req
  * @param {http.ServerResponse} res
@@ -11,23 +5,12 @@ const defaultTypes = {
  * @returns {boolean}
  */
 module.exports = function (req, res, url) {
-	if (req.method != "GET" || !url.pathname.startsWith("/go/character_creator")) return;
-	var match = /\/go\/character_creator\/(\w+)(\/\w+)?(\/.+)?$/.exec(url.pathname);
+	if (req.method != "GET") return;
+	var match = url.pathname.match(/\/videomaker\/full\/(\w+)\/tutorial?$/);
 	if (!match) return;
-	[, theme, mode, id] = match;
+	const theme = match[1];
 
-	var redirect;
-	switch (mode) {
-		case "/copy": {
-			redirect = `/cc?themeId=${theme}&original_asset_id=${id.substr(1)}`;
-			break;
-		}
-		default: {
-			var type = url.query.type || defaultTypes[theme] || "";
-			redirect = `/cc?themeId=${theme}&bs=${type}`;
-			break;
-		}
-	}
+	var redirect = `/go_full/tutorial?tray=${theme}`;
 	res.setHeader("Location", redirect);
 	res.statusCode = 302;
 	res.end();
