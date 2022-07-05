@@ -1,3 +1,16 @@
-@echo off
-if exist .git ( git pull || echo Update failed. Attempting to update again... && git stash && git pull ) else ( echo Git not found. Update skiped. && pause & exit )
-echo Update complete. && pause & exit
+@echo off && cls
+::    Anistick Animium Updater    ::
+::     Made by Kia and Joseph     ::
+::      https://anistick.com      ::
+if not exist git goto nogit
+if exist git goto yesgit
+:nogit
+echo Git doesn't exist. Please download Animium from the Animium GitHub repository.
+explorer https://github.com/KiaWeb/Animium
+:yesgit
+if exist .git ( goto yesdotgit ) else ( goto nodotgit )
+:yesdotgit
+git pull || git stash && git pull || goto noworkingupdate
+:nodotgit
+echo There is no .git directory. Please download Animium from the Animium GitHub repository.
+explorer https://github.com/KiaWeb/Animium
