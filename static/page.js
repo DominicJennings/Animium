@@ -16,7 +16,7 @@ function toParamString(table) {
 		.join(" ");
 }
 function toObjectString(attrs, params) {
-	return `<object id="obj" ${Object.keys(attrs)
+	return `<object ${Object.keys(attrs)
 		.map((key) => `${key}="${attrs[key].replace(/"/g, '\\"')}"`)
 		.join(" ")}>${toParamString(params)}</object>`;
 }
@@ -34,46 +34,11 @@ module.exports = function (req, res, url) {
 	var attrs, params, title;
 	switch (url.pathname) {
 		case "/cc": {
-			title = "Character Creator";
+			title = 'Character Creator';
 			attrs = {
-				data: process.env.SWF_URL + "/cc.swf", // data: 'cc.swf',
-				type: "application/x-shockwave-flash",
-				id: "char_creator",
-				width: "100%",
-				height: "100%",
-			};
-			params = {
-				flashvars: {
-					apiserver: "/",
-					storePath: process.env.STORE_URL + "/<store>",
-					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
-					original_asset_id: query["id"] || null,
-					themeId: "business",
-					ut: 60,
-					bs: "default",
-					appCode: "go",
-					page: "",
-					siteId: "go",
-					m_mode: "school",
-					isLogin: "Y",
-					isEmbed: 1,
-					ctc: "go",
-					tlang: "en_US",
-				},
-				allowScriptAccess: "always",
-				movie: process.env.SWF_URL + "/cc.swf", // 'http://localhost/cc.swf'
-			};
-			break;
-		}
-
-		case "/cc_browser": {
-			title = "CC Browser";
-			attrs = {
-				data: process.env.SWF_URL + "/cc_browser.swf", // data: 'cc_browser.swf',
-				type: "application/x-shockwave-flash",
-				id: "char_creator",
-				width: "100%",
-				height: "100%",
+				data: process.env.SWF_URL + '/cc.swf', // data: 'cc.swf',
+				type: 'application/x-shockwave-flash', 
+				id: 'char_creator',
 			};
 			params = {
 				flashvars: {
@@ -83,11 +48,45 @@ module.exports = function (req, res, url) {
 					original_asset_id: query["id"] || null,
 					themeId: "family",
 					ut: 60,
+					bs: "adam",
 					appCode: "go",
 					page: "",
 					siteId: "go",
 					m_mode: "school",
 					isLogin: "Y",
+					isEmbed: 1,
+					ctc: "go",
+					tlang: "en_US",
+                    nextUrl: "/cc_browser",
+				},
+				allowScriptAccess: "always",
+				movie: process.env.SWF_URL + "/cc.swf", // 'http://localhost/cc.swf'
+			};
+			break;
+		}
+
+		case "/cc_browser": {
+			title = "Character Browser";
+			attrs = {
+				data: process.env.SWF_URL + "/cc_browser.swf", // data: 'cc_browser.swf',
+				type: "application/x-shockwave-flash",
+				id: "char_browser",
+			};
+			params = {
+				flashvars: {
+					apiserver: "/",
+					storePath: process.env.STORE_URL + "/<store>",
+					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
+					original_asset_id: query["id"] || null,
+					themeId: "family",
+					ut: 30,
+					appCode: "go",
+					page: "",
+					siteId: "go",
+					m_mode: "school",
+					isLogin: "Y",
+					retut: 1,
+					goteam_draft_only: 1,
 					isEmbed: 1,
 					ctc: "go",
 					tlang: "en_US",
@@ -99,7 +98,8 @@ module.exports = function (req, res, url) {
 			break;
 		}
 
-		case "/go_full": {
+		case "/go_full":
+		case "/go_full/tutorial": {
 			let presave =
 				query.movieId && query.movieId.startsWith("m")
 					? query.movieId
@@ -108,8 +108,7 @@ module.exports = function (req, res, url) {
 			attrs = {
 				data: process.env.SWF_URL + "/go_full.swf",
 				type: "application/x-shockwave-flash",
-				width: "100%",
-				height: "100%",
+				id: "video_maker",
 			};
 			params = {
 				flashvars: {
@@ -117,42 +116,66 @@ module.exports = function (req, res, url) {
 					storePath: process.env.STORE_URL + "/<store>",
 					isEmbed: 1,
 					ctc: "go",
-					ut: 50,
+					ut: 60,
 					bs: "default",
 					appCode: "go",
 					page: "",
 					siteId: "go",
 					lid: 13,
 					isLogin: "Y",
-					retut: 1,
+					retut: 0,
 					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
-					themeId: "business",
+					themeId: "custom",
 					tlang: "en_US",
 					presaveId: presave,
 					goteam_draft_only: 1,
 					isWide: 1,
 					collab: 0,
-					nextUrl: "/html/list.html",
+					nextUrl: "../pages/html/list.html",
+					noSkipTutorial: 1,
 				},
 				allowScriptAccess: "always",
+				allowFullScreen: "true",
 			};
 			break;
 		}
 
 		case "/player": {
-			title = "Player";
+			title = "Video Player";
 			attrs = {
 				data: process.env.SWF_URL + "/player.swf",
 				type: "application/x-shockwave-flash",
-				width: "100%",
-				height: "100%",
+				id: "video_player",
 			};
 			params = {
 				flashvars: {
 					apiserver: "/",
 					storePath: process.env.STORE_URL + "/<store>",
-					ut: 60,
+					ut: 30,
 					autostart: 1,
+					isWide: 1,
+					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
+				},
+				allowScriptAccess: "always",
+				allowFullScreen: "true",
+			};
+			break;
+		}
+
+		case "/recordWindow": {
+			title = "Record Window";
+			attrs = {
+				data: process.env.SWF_URL + "/player.swf",
+				type: "application/x-shockwave-flash",
+				id: "video_player",
+				quality: "medium",
+			};
+			params = {
+				flashvars: {
+					apiserver: "/",
+					storePath: process.env.STORE_URL + "/<store>",
+					ut: 30,
+					autostart: 0,
 					isWide: 1,
 					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
 				},
@@ -167,10 +190,57 @@ module.exports = function (req, res, url) {
 	}
 	res.setHeader("Content-Type", "text/html; charset=UTF-8");
 	Object.assign(params.flashvars, query);
-	res.end(
-		`<script>document.title='${title}',flashvars=${JSON.stringify(
-			params.flashvars
-		)}</script><body style="margin:0px">${toObjectString(attrs, params)}</body>${stuff.pages[url.pathname] || ""}`
-	);
+	res.end(`
+	<head>
+		<script>
+			document.title='${title}',flashvars=${JSON.stringify(params.flashvars)}
+		</script>
+		<script src="/pages/js/stuff.js"></script>
+		<script>
+			if(window.location.pathname == '/player' || window.location.pathname == '/go_full' || window.location.pathname == '/recordWindow' || window.location.pathname == '/go_full/tutorial') {
+				function hideHeader() {
+					document.getElementById("header").remove();
+				}
+			}
+		</script>
+		<link rel="stylesheet" type="text/css" href="/pages/css/modern-normalize.css">
+		<link rel="stylesheet" type="text/css" href="/pages/css/global.css">
+		<link rel="stylesheet" type="text/css" href="/pages/css/swf.css">
+	</head>
+	
+	<header id="header">
+		<a href="//anistick.com/studio">
+			<h1 style="margin:0"><img id="logo" src="//imagedelivery.net/AJ83xT-fEgXqaMekWULFDg/742e3d83-a82d-4298-7b67-6ff5bfec3400/public" alt="Anistick Studio"/></h1>
+		</a>
+		<nav id="headbuttons">
+			<div class="dropdown_contain button_small">
+				<div class="dropdown_button upload_button">UPLOAD</div>
+				<nav class="dropdown_menu">
+					<a onclick="document.getElementById('file').click()">Movie</a>
+					<a onclick="document.getElementById('file2').click()">Character</a>
+                                        <a onclick="document.getElementById('file3').click()">Starter</a>
+				</nav>
+			</div>
+			<a href="/pages/html/create.html" class="button_big">CREATE</a>
+		</nav>
+	</header>
+	
+	<body onload="hideHeader()">
+		<main>
+			${toObjectString(attrs, params)}
+		</main>
+
+		<form enctype='multipart/form-data' action='/upload_movie' method='post'>
+			<input id='file' type="file" onchange="this.form.submit()" name='import' />
+		</form>
+
+		<form enctype='multipart/form-data' action='/upload_character' method='post'>
+			<input id='file2' type="file" onchange="this.form.submit()" name='import' />
+		</form>
+     
+                <form enctype='multipart/form-data' action='/upload_starter' method='post'>
+			<input id='file3' type="file" onchange="this.form.submit()" name='import' />
+		</form>
+	</body>${stuff.pages[url.pathname] || ''}`)
 	return true;
 };

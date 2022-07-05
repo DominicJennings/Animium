@@ -16,6 +16,11 @@ module.exports = {
                                  return caché.newProp(buffer, mId, "", suffix); 
                                  break;
                          }
+                         case "video": { 
+                                 suffix = `-${mode}.${ext}`;
+                                 return caché.newVideo(buffer, mId, "", suffix); 
+                                 break;
+                         }
                          default: {
                                  suffix = `-${mode}.${ext}`;
                                  return caché.newItem(buffer, mId, "", suffix);

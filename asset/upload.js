@@ -26,6 +26,9 @@ module.exports = function (req, res, url) {
 					case "mu":
 						mode = "music";
 						break;
+                                        case "vid":
+						mode = "video";
+						break;
 				}
 
 				var path = files.import.path;

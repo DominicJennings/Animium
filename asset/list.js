@@ -55,7 +55,7 @@ async function listAssets(data, makeZip) {
                 case "video": {
                        files = asset.list(data.movieId, "video");
 		       xmlString = `${header}<ugc more="0">${files
-			       .map((v) =>`<prop subtype="video" id="${v.id}" name="${v.name}" enable="Y" enc_asset_id="${v.id}" placeable="1" facing="left" width="0" height="0" asset_url="${process.env.VIDEOS_FOLDER}/${v.id}"/>`)
+			       .map((v) =>`<prop subtype="video" id="${v.id}" enc_asset_id="${v.id}" name="${v.name}" enable="Y" placeable="1" facing="left" width="640" height="360" asset_url="${process.env.VIDEOS_FOLDER}/${v.id}" thumbnail_url="${process.env.THUMB_URL}"/>`)
 			       .join("")}</ugc>`;
 		       break;
                 }
