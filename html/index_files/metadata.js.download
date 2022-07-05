@@ -1,0 +1,50 @@
+var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+  let window = _____WB$wombat$assign$function_____("window");
+  let self = _____WB$wombat$assign$function_____("self");
+  let document = _____WB$wombat$assign$function_____("document");
+  let location = _____WB$wombat$assign$function_____("location");
+  let top = _____WB$wombat$assign$function_____("top");
+  let parent = _____WB$wombat$assign$function_____("parent");
+  let frames = _____WB$wombat$assign$function_____("frames");
+  let opener = _____WB$wombat$assign$function_____("opener");
+
+(function(W) {
+  if (W.detect.ipad || W.detect.iphone) {
+    return;
+  }
+  var hashedId = "b9wtido8pl";
+  var mediaJson = {"assets":{"flv":{"type":"flv","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/6eea782a6a56bb92f9b244907855f262ea6f12d6.bin","width":640,"height":360,"ext":"flv","size":9646985,"2pass":true},"iphone":{"type":"iphone","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/530b56e7932193622204f878ff06da11fb578e04.bin","width":640,"height":360,"ext":"mp4","size":10796901,"2pass":"true"},"mdflv":{"type":"mdflv","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/b25dfad4915bd9788aef078431b052f271539dfd.bin","width":960,"height":540,"ext":"flv","size":14853662,"2pass":true},"mdmp4":{"type":"mdmp4","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/2f23ab64524e96837b251dca7a0e3ebeb8e8043c.bin","width":960,"height":540,"ext":"mp4","size":15900493,"2pass":"true"},"hdflv":{"type":"hdflv","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/0c3618f4b7ae9522ff50a5f80b1e169139704f62.bin","width":1280,"height":720,"ext":"flv","size":22201853,"2pass":true},"hdmp4":{"type":"hdmp4","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/57b545a2699960cf543594dbb7c312ab13602661.bin","width":1280,"height":720,"ext":"mp4","size":23716558,"2pass":"true"},"still":{"type":"still","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/6bbeeb702bce1fd1a80efed1e27bed7dce8b1444.bin","width":1920,"height":1080,"ext":"jpg","size":174828,"2pass":null},"original":{"type":"original","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/fe17b729a00393d8795d5daac86d4e52dc19f7af.bin","width":1920,"height":1080,"ext":"mp4","size":66174592,"2pass":null},"preview":{"type":"preview","url":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/deliveries/b25dfad4915bd9788aef078431b052f271539dfd.bin","width":960,"height":540,"ext":"flv","size":14853662,"2pass":true}},"distilleryUrl":"http://web.archive.org/web/20140402152730/http://distillery.wistia.com/x","accountKey":"wistia-production_14033","mediaKey":"wistia-production_4828547","name":"GoAnimate for Business","duration":132.0,"hashedId":"b9wtido8pl","branding":false,"flashPlayerUrl":"http://web.archive.org/web/20140402152730/http://embed.wistia.com/flash/embed_player_v2.0.swf?2013-10-04","trackingTransmitInterval":20,"showAbout":true,"playerPreference":"auto","embed_options":{"volumeControl":"true","fullscreenButton":"true","controlsVisibleOnLoad":"true","playerColor":"7b796a"}};
+  for (var key in W.data("video")) {
+    var vid = W.data(["video", key]);
+    if (vid.hashedId() === hashedId) {
+      W.seo.inject(mediaJson, W.extend({}, vid.params));
+      break;
+    }
+  }
+}(Wistia));
+
+
+}
+/*
+     FILE ARCHIVED ON 15:27:30 Apr 02, 2014 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 23:27:48 May 27, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 85.51
+  exclusion.robots: 0.107
+  exclusion.robots.policy: 0.098
+  RedisCDXSource: 0.601
+  esindex: 0.009
+  LoadShardBlock: 64.367 (3)
+  PetaboxLoader3.datanode: 128.666 (4)
+  CDXLines.iter: 17.237 (3)
+  load_resource: 1147.875
+  PetaboxLoader3.resolve: 1053.353
+*/

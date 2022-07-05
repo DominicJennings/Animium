@@ -1,0 +1,8 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<theme id="ugc" name="Community Stuff">
+ <char id="ios" name="IOS" thumb="ios.swf" facing="left" default="ios.swf" motion="ios.swf" enable="Y" is_premium="N" aid="237" money="0" sharing="0">
+    <action aid="6928" enable="Y" name="Be a phone" id="ios.swf" totalframe="1" loop="Y"/>
+  </char>
+  <char id="android" name="Android" thumb="android.swf" facing="left" default="android.swf" motion="android.swf" enable="Y" is_premium="N" aid="237" money="0" sharing="0">
+    <action aid="6928" enable="Y" name="Be a phone" id="android.swf" totalframe="1" loop="Y"/>
+  </char>

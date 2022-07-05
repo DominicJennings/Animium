@@ -171,6 +171,7 @@ module.exports = {
 							data = "effect";
 						}
 
+						const prop = "prop";
 						switch (data) {
 							case "durationSetting":
 							case "trans":
@@ -329,13 +330,11 @@ module.exports = {
 					} else if (sfile.startsWith("ugc.")) {
 						var subtype, fileName;
 						if (ttsData) {
-							var text = ttsData.childNamed("text").val;
-							var vName = ttsData.childNamed("voice").val;
+							var text = ttsData.childNamed("text");
+							var vName = ttsData.childNamed("voice");
 							var vInfo = ttsInfo.voices[vName];
 							if (vInfo) {
-								fileName = `[${vInfo.desc}] ${text.replace(/"/g, '\\"')}`;
 							} else {
-								fileName = text.replace(/"/g, '\\"');
 							}
 							subtype = "tts";
 						} else {
@@ -553,14 +552,27 @@ module.exports = {
 		var i = mId.indexOf("-");
 		var prefix = mId.substr(0, i);
 		var suffix = mId.substr(i + 1);
-		if (prefix == "m") {
-			var beg = xml.lastIndexOf("<thumb>");
-			var end = xml.lastIndexOf("</thumb>");
-			if (beg > -1 && end > -1) {
-				var sub = Buffer.from(xml.subarray(beg + 7, end).toString(), "base64");
-				fs.writeFileSync(fUtil.getFileIndex("thumb-", ".png", suffix), sub);
-			}
-			fs.writeFileSync(fUtil.getFileIndex("movie-", ".xml", suffix), xml);
-		}
+		switch (prefix) { 
+                        case "m": {
+			        var beg = xml.lastIndexOf("<thumb>");
+			        var end = xml.lastIndexOf("</thumb>");
+			        if (beg > -1 && end > -1) {
+				        var sub = Buffer.from(xml.subarray(beg + 7, end).toString(), "base64");
+				        fs.writeFileSync(fUtil.getFileIndex("thumb-", ".png", suffix), sub);
+			        }
+			        fs.writeFileSync(fUtil.getFileIndex("movie-", ".xml", suffix), xml);
+                                break;
+		        }
+                        case "s": {
+			        var beg = xml.lastIndexOf("<thumb>");
+			        var end = xml.lastIndexOf("</thumb>");
+			        if (beg > -1 && end > -1) {
+				        var sub = Buffer.from(xml.subarray(beg + 7, end).toString(), "base64");
+				        fs.writeFileSync(fUtil.getFileIndex("starter-", ".png", suffix), sub);
+			        }
+			        fs.writeFileSync(fUtil.getFileIndex("starter-", ".xml", suffix), xml);
+                                break;
+		        }
+                }
 	},
 };

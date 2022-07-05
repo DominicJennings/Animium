@@ -1,5 +1,6 @@
 const cachéFolder = process.env.CACHÉ_FOLDER;
 const fs = require("fs");
+const propThumbFolder = process.env.PROP_THUMB_FOLDER;
 
 /**
  * @summary Dictionary of hashmaps of saved assets, respective to each movie ID loaded.
@@ -61,6 +62,25 @@ module.exports = {
 		size += buffer.size;
 		return buffer;
 	},
+        /**
+	 *
+	 * @summary Saves a buffer in movie caché with a given ID.
+	 * @param {string} mId
+	 * @param {string} aId
+	 * @param {Buffer} buffer
+	 */
+	saveProp(mId, aId, buffer) {
+		if (!this.validAssetId(aId)) return;
+		localCaché[mId] = localCaché[mId] || [];
+		var stored = localCaché[mId];
+		const path = `${propThumbFolder}/${aId}`;
+
+		if (!stored.includes(aId)) stored.push(aId);
+		if (fs.existsSync(path)) size -= fs.statSync(path).size;
+		fs.writeFileSync(path, buffer);
+		size += buffer.size;
+		return buffer;
+	},
 	/**
 	 *
 	 * @summary Saves a given dictionary of buffers to caché.
@@ -109,6 +129,22 @@ module.exports = {
 		var stored = localCaché[mId];
 		var aId = this.generateId(prefix, suffix, stored);
 		this.save(mId, aId, buffer);
+		return aId;
+	},
+        /**
+	 *
+	 * @summary Allocates a new video-wide ID for a given buffer in the caché.
+	 * @param {Buffer} buffer
+	 * @param {string} mId
+	 * @param {string} prefix
+	 * @param {string} suffix
+	 */
+	newProp(buffer, mId, prefix = "", suffix = "") {
+		localCaché[mId] = localCaché[mId] || [];
+		var stored = localCaché[mId];
+		var aId = this.generateId(prefix, suffix, stored);
+		this.saveProp(mId, aId, buffer);
+                this.save(mId, aId, buffer);
 		return aId;
 	},
 	/**

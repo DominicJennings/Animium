@@ -1,0 +1,987 @@
+<html class="js-focus-visible" data-js-focus-visible=""><script type="text/javascript" async="" src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/c5eda915a49e275384d3c74839d61b5584741010.1.js"></script><script type="text/javascript" async="" src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/i.js"></script><script type="text/javascript" class="__REQUESTLY__SCRIPT">(function(namespace) {
+  window[namespace] = window[namespace] || {};
+  window[namespace].responseRules = {};
+
+  let open = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(method) {
+    this.addEventListener('readystatechange', function() {
+      if (this.readyState === 4 && window[namespace].responseRules.hasOwnProperty(this.responseURL)) {
+        const responseRule = window[namespace].responseRules[this.responseURL];
+        const {response, id} = responseRule;
+        const responseType = this.responseType;
+        let customResponse;
+
+        customResponse = response.type === 'code' ? responseRule.evaluator({
+            method,
+            url: this.responseURL,
+            requestHeaders: this.requestHeaders,
+            requestData: this.requestData,
+            responseType: this.responseType,
+            response: this.response
+          }) : response.value;
+
+        Object.defineProperty(this, 'response', {
+          get: function () {
+            if (response.type === 'static' && responseType === 'json') {
+              return JSON.parse(customResponse);
+            }
+            return customResponse;
+          }
+        });
+
+        if (responseType === '' || responseType === 'text') {
+          Object.defineProperty(this, 'responseText', {
+            get: function () {
+              return customResponse;
+            }
+          });
+        }
+
+        window.postMessage({
+          from: 'requestly',
+          type: 'response_rule_applied',
+          id
+        }, window.location.href);
+      }
+    }, false);
+    open.apply(this, arguments);
+  };
+
+  let send = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.send = function(data) {
+    this.requestData = data;
+    send.apply(this, arguments);
+  };
+
+  let setRequestHeader = XMLHttpRequest.prototype.setRequestHeader;
+  XMLHttpRequest.prototype.setRequestHeader = function(header, value) {
+    this.requestHeaders = this.requestHeaders || {};
+    this.requestHeaders[header] = value;
+    setRequestHeader.apply(this, arguments);
+  }
+})('__REQUESTLY__')</script><head><script src="https://archive.org/includes/analytics.js?v=cf34f82" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app31.us.archive.org';v.server_ms=1298;archive_analytics.send_pageview({});});</script><script type="text/javascript" src="/_static/js/playback.bundle.js?v=bQvHU8mx" charset="utf-8"></script>
+<script type="text/javascript" src="/_static/js/wombat.js?v=cRqOKCOw" charset="utf-8"></script>
+<script type="text/javascript">
+  __wm.init("https://web.archive.org/web");
+  __wm.wombat("http://goanimate.com/studio","20110808204216","https://web.archive.org/","web","/_static/",
+	      "1312836136");
+</script>
+<link rel="stylesheet" type="text/css" href="/_static/css/banner-styles.css?v=bsmaklHF">
+<link rel="stylesheet" type="text/css" href="/_static/css/iconochive.css?v=qtvMKcIJ">
+<!-- End Wayback Rewrite JS Include -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>GoAnimate - Video List</title>
+
+<meta property="og:site_name" content="GoAnimate">
+<meta property="fb:app_id" content="177116303202">
+<meta name="description" content="GoAnimate is a way to easily create animations and share with friends.">
+<meta name="keywords" content="Animation, eCard, flash free, web 2.0, cartoon, comics, create animations free, movie, film, video">
+
+<meta name="google-site-verification" content="K_niiTfCVi72gwvxK00O4NjsVybMutMUnc-ZnN6HUuA">
+
+<link rel="alternate" href="https://web.archive.org/web/20110808204216/http://feeds.feedburner.com/GoAnimate" type="application/rss+xml" title="GoAnimate Blog">
+<link rel="alternate" href="https://web.archive.org/web/20110808204216/http://feeds.feedburner.com/GoAnimate/WhatsNew" type="application/rss+xml" title="GoAnimate - Recently Released Content">
+<link rel="alternate" href="https://web.archive.org/web/20110808204216/http://feeds.feedburner.com/GoAnimate/MostWatched" type="application/rss+xml" title="GoAnimate - Most Watched">
+
+<link href="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/css/global.css" rel="stylesheet" type="text/css">
+<link href="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/css/overlay.css" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Droid+Sans:bold" rel="stylesheet" type="text/css">
+<link href="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/css/buttons.css" rel="stylesheet" type="text/css">
+<link href="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/css/create.css" rel="stylesheet" type="text/css">
+<!--[if lte IE 6]><link href="/static/go/css/ie6.css" rel="stylesheet" type="text/css" /><![endif]-->
+<!--[if lte IE 7]><style type="text/css">div.header {z-index: 10;}</style><![endif]-->
+
+<script type="text/javascript">
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/prototype.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/jquery/jquery-1.4.4.min.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/http:/w/ww.google.com/jsapi"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/go2.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/overlay.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/jquery/jquery.swfobject.min.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/jquery/jquery.blockUI.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/cookie.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/Gettext.js"></script>
+<script type="text/javascript" src="https://web.archive.org/web/20110808204216js_/http://lightspeed.goanimate.com/static/228/go/po/goserver_js-en_US.json"></script>
+<script type="text/javascript">
+jQuery.flash.expressInstall = "/static/libs/expressInstall.swf";
+
+var I18N_LANG = 'en_US';
+var GT = new Gettext({'locale_data': json_locale_data});
+</script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/cookie.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/picker.js"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/addressbook.js"></script><script src="https://web.archive.org/web/20110808201809/http://www.google.com/uds/?file=gdata&amp;v=1.x" type="text/javascript"></script><script src="https://web.archive.org/web/20110808201809/http://www.google.com/uds/api/gdata/1.10/bb5c7bea9d0f750980b0c50aeb221391/core,mediarss,opensearch,geo,atom,threading,app,gdata,maps,gbase,finance,blogger,contacts,analytics,acl,calendar,default.I.js" type="text/javascript"></script>
+<script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/studio.js"></script>
+
+
+<!-- GoAnimate_Footer_ROS_Bottom_960x284 -->
+<script type="text/javascript" src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/google_service.js">
+</script>
+<script type="text/javascript">
+GS_googleAddAdSenseService("ca-pub-9090384317741239");
+GS_googleEnableAllServices();
+</script><script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/google_ads.js"></script>
+<script type="text/javascript">
+GA_googleAddAttr("is_login", "no");
+GA_googleAddAttr("is_plus", "no");
+</script>
+<script type="text/javascript">
+GA_googleAddSlot("ca-pub-9090384317741239", "GoAnimate_Footer_ROS_Bottom_960x284");
+GA_googleAddSlot("ca-pub-9090384317741239", "GoAnimate_Create_Leaderboard_960x292");
+</script>
+<script type="text/javascript">
+GA_googleFetchAds();
+</script>
+<style type="text/css">div.footerad div {height:284px;}</style>
+<!-- GoAnimate_Footer_ROS_Bottom_960x284 -->
+
+<style type="text/css">
+@font-face {
+  font-weight: 400;
+  font-style:  normal;
+  font-family: 'Circular-Loom';
+
+  src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts2/CircularXXWeb-Book-cd7d2bcec649b1243839a15d5eb8f0a3.woff2') format('woff2');
+}
+
+@font-face {
+  font-weight: 500;
+  font-style:  normal;
+  font-family: 'Circular-Loom';
+
+  src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts2/CircularXXWeb-Medium-d74eac43c78bd5852478998ce63dceb3.woff2') format('woff2');
+}
+
+@font-face {
+  font-weight: 700;
+  font-style:  normal;
+  font-family: 'Circular-Loom';
+
+  src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts2/CircularXXWeb-Bold-83b8ceaf77f49c7cffa44107561909e4.woff2') format('woff2');
+}
+
+@font-face {
+  font-weight: 900;
+  font-style:  normal;
+  font-family: 'Circular-Loom';
+
+  src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts2/CircularXXWeb-Black-bf067ecb8aa777ceb6df7d72226febca.woff2') format('woff2');
+}</style><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}
+.fb_reset{background:none;border-spacing:0;border:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size: 11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}
+.fb_link img{border:none}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}
+.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px}
+.fb_dialog_content{background:#fff;color:#333}
+.fb_dialog_close_icon{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px;top:8px\9;right:7px\9}
+.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}
+.fb_dialog_close_icon:hover{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/s816eWC-2sl.gif)}
+.fb_dialog_close_icon:active{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img//IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/s816eWC-2sl.gif)}
+.fb_dialog_loader{background-color:#f2f2f2;border:1px solid #606060;font-size: 24px;padding:20px}
+.fb_dialog_top_left,
+.fb_dialog_top_right,
+.fb_dialog_bottom_left,
+.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}
+.fb_dialog_top_left{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}
+.fb_dialog_top_right{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}
+.fb_dialog_bottom_left{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}
+.fb_dialog_bottom_right{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right,
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}
+.fb_dialog_vert_left,
+.fb_dialog_vert_right{width:10px;height:100%}
+.fb_dialog_vert_left{margin-left:-10px}
+.fb_dialog_vert_right{right:0;margin-right:-10px}
+.fb_dialog_horiz_top,
+.fb_dialog_horiz_bottom{width:100%;height:10px}
+.fb_dialog_horiz_top{margin-top:-10px}
+.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}
+.fb_dialog_iframe{line-height:0}
+.fb_dialog.loading.fb_dialog_mobile .fb_dialog_iframe{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/pQebR9nCkAT.gif) no-repeat 50% 50%}
+.fb_dialog.loading.fb_dialog_mobile iframe{visibility:hidden}
+.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #3b5998;color:#fff;font-size: 14px;font-weight:bold;margin:0}
+.fb_dialog_content .dialog_title > span{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}
+.fb_dialog_content .dialog_content{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}
+.fb_dialog_content .dialog_footer{background:#f2f2f2;border:1px solid #555;border-top-color:#ccc;height:40px}
+#fb_dialog_loader_close{float:right}
+.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}
+.fb_dialog.loading.fb_dialog_mobile .fb_dialog_close_icon{visibility:visible}
+.fb_iframe_widget{position:relative;display:-moz-inline-block;display:inline-block}
+.fb_iframe_widget iframe{position:relative;vertical-align:text-bottom}
+.fb_iframe_widget span{position:relative}
+.fb_hide_iframes iframe{position:relative;left:-10000px}
+.fb_iframe_widget_loader{position:relative;display:inline-block}
+.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}
+.fb_iframe_widget_loader .FB_Loader{background:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}
+.fb_button_simple,
+.fb_button_simple_rtl{background-image:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/eIpbnVKI9lR.png);background-repeat:no-repeat;cursor:pointer;outline:none;text-decoration:none}
+.fb_button_simple_rtl{background-position:right 0}
+.fb_button_simple .fb_button_text{margin:0 0 0 20px;padding-bottom:1px}
+.fb_button_simple_rtl .fb_button_text{margin:0 10px 0 0}
+a.fb_button_simple:hover .fb_button_text,
+a.fb_button_simple_rtl:hover .fb_button_text,
+.fb_button_simple:hover .fb_button_text,
+.fb_button_simple_rtl:hover .fb_button_text{text-decoration:underline}
+.fb_button,
+.fb_button_rtl{background:#29447e url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/FGFbc80dUKj.png);background-repeat:no-repeat;cursor:pointer;display:inline-block;padding:0 0 0 1px;text-decoration:none;outline:none}
+.fb_button .fb_button_text,
+.fb_button_rtl .fb_button_text{background:#5f78ab url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/FGFbc80dUKj.png);border-top:solid 1px #879ac0;border-bottom:solid 1px #1a356e;color:#fff;display:block;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-weight:bold;padding:2px 6px 3px 6px;margin:1px 1px 0 21px;text-shadow:none}
+a.fb_button,
+a.fb_button_rtl,
+.fb_button,
+.fb_button_rtl{text-decoration:none}
+a.fb_button:active .fb_button_text,
+a.fb_button_rtl:active .fb_button_text,
+.fb_button:active .fb_button_text,
+.fb_button_rtl:active .fb_button_text{border-bottom:solid 1px #29447e;border-top:solid 1px #45619d;background:#4f6aa3;text-shadow:none}
+.fb_button_xlarge,
+.fb_button_xlarge_rtl{background-position:left -60px;font-size: 24px;line-height:30px}
+.fb_button_xlarge .fb_button_text{padding:3px 8px 3px 12px;margin-left:38px}
+a.fb_button_xlarge:active{background-position:left -99px}
+.fb_button_xlarge_rtl{background-position:right -268px}
+.fb_button_xlarge_rtl .fb_button_text{padding:3px 8px 3px 12px;margin-right:39px}
+a.fb_button_xlarge_rtl:active{background-position:right -307px}
+.fb_button_large,
+.fb_button_large_rtl{background-position:left -138px;font-size: 13px;line-height:16px}
+.fb_button_large .fb_button_text{margin-left:24px;padding:2px 6px 4px 6px}
+a.fb_button_large:active{background-position:left -163px}
+.fb_button_large_rtl{background-position:right -346px}
+.fb_button_large_rtl .fb_button_text{margin-right:25px}
+a.fb_button_large_rtl:active{background-position:right -371px}
+.fb_button_medium,
+.fb_button_medium_rtl{background-position:left -188px;font-size: 11px;line-height:14px}
+a.fb_button_medium:active{background-position:left -210px}
+.fb_button_medium_rtl{background-position:right -396px}
+.fb_button_text_rtl,
+.fb_button_medium_rtl .fb_button_text{padding:2px 6px 3px 6px;margin-right:22px}
+a.fb_button_medium_rtl:active{background-position:right -418px}
+.fb_button_small,
+.fb_button_small_rtl{background-position:left -232px;font-size: 10px;line-height:10px}
+.fb_button_small .fb_button_text{padding:2px 6px 3px;margin-left:17px}
+a.fb_button_small:active,
+.fb_button_small:active{background-position:left -250px}
+.fb_button_small_rtl{background-position:right -440px}
+.fb_button_small_rtl .fb_button_text{padding:2px 6px;margin-right:18px}
+a.fb_button_small_rtl:active{background-position:right -458px}
+.fb_share_count_wrapper{position:relative;float:left}
+.fb_share_count{background:#b0b9ec none repeat scroll 0 0;color:#333;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;text-align:center}
+.fb_share_count_inner{background:#e8ebf2;display:block}
+.fb_share_count_right{margin-left:-1px;display:inline-block}
+.fb_share_count_right .fb_share_count_inner{border-top:solid 1px #e8ebf2;border-bottom:solid 1px #b0b9ec;margin:1px 1px 0 1px;font-size: 10px;line-height:10px;padding:2px 6px 3px;font-weight:bold}
+.fb_share_count_top{display:block;letter-spacing:-1px;line-height:34px;margin-bottom:7px;font-size: 22px;border:solid 1px #b0b9ec}
+.fb_share_count_nub_top{border:none;display:block;position:absolute;left:7px;top:35px;margin:0;padding:0;width:6px;height:7px;background-repeat:no-repeat;background-image:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/bSOHtKbCGYI.png)}
+.fb_share_count_nub_right{border:none;display:inline-block;padding:0;width:5px;height:10px;background-repeat:no-repeat;background-image:url(https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/i_oIVTKMYsL.png);vertical-align:top;background-position:right 5px;z-index:10;left:2px;margin:0 2px 0 0;position:relative}
+.fb_share_no_count{display:none}
+.fb_share_size_Small .fb_share_count_right .fb_share_count_inner{font-size: 10px}
+.fb_share_size_Medium .fb_share_count_right .fb_share_count_inner{font-size: 11px;padding:2px 6px 3px;letter-spacing:-1px;line-height:14px}
+.fb_share_size_Large .fb_share_count_right .fb_share_count_inner{font-size: 13px;line-height:16px;padding:2px 6px 4px;font-weight:normal;letter-spacing:-1px}
+.fb_share_count_hidden .fb_share_count_nub_top,
+.fb_share_count_hidden .fb_share_count_top,
+.fb_share_count_hidden .fb_share_count_nub_right,
+.fb_share_count_hidden .fb_share_count_right{visibility:hidden}
+.fb_connect_bar_container div,
+.fb_connect_bar_container span,
+.fb_connect_bar_container a,
+.fb_connect_bar_container img,
+.fb_connect_bar_container strong{background:none;border-spacing:0;border:0;direction:ltr;font-style:normal;font-variant:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal;vertical-align:baseline}
+.fb_connect_bar_container{position:fixed;left:0 !important;right:0 !important;height:42px !important;padding:0 25px !important;margin:0 !important;vertical-align:middle !important;border-bottom:1px solid #333 !important;background:#3b5998 !important;z-index:99999999 !important;overflow:hidden !important}
+.fb_connect_bar_container_ie6{position:absolute;top:expression(document.compatMode=="CSS1Compat"? document.documentElement.scrollTop+"px":body.scrollTop+"px")}
+.fb_connect_bar{position:relative;margin:auto;height:100%;width:100%;padding:6px 0 0 0 !important;background:none;color:#fff !important;font-family:"lucida grande", tahoma, verdana, arial, sans-serif !important;font-size: 13px !important;font-style:normal !important;font-variant:normal !important;font-weight:normal !important;letter-spacing:normal !important;line-height:1 !important;text-decoration:none !important;text-indent:0 !important;text-shadow:none !important;text-transform:none !important;white-space:normal !important;word-spacing:normal !important}
+.fb_connect_bar a:hover{color:#fff}
+.fb_connect_bar .fb_profile img{height:30px;width:30px;vertical-align:middle;margin:0 6px 5px 0}
+.fb_connect_bar div a,
+.fb_connect_bar span,
+.fb_connect_bar span a{color:#bac6da;font-size: 11px;text-decoration:none}
+.fb_connect_bar .fb_buttons{float:right;margin-top:7px}
+.fb_edge_widget_with_comment{position:relative;*z-index:1000}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget{position:absolute}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_ltr{left:-4px}
+.fb_edge_widget_with_comment span.fb_edge_comment_widget iframe.fb_rtl{left:2px}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget{left:0;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget .FB_Loader{left:0;top:1px;margin-top:6px;margin-left:0;background-position:50% 50%;background-color:#fff;height:150px;width:394px;border:1px #666 solid;border-bottom:2px solid #283e6c;z-index:1}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.dark .FB_Loader{background-color:#000;border-bottom:2px solid #ccc}
+.fb_edge_widget_with_comment span.fb_send_button_form_widget.siderender
+.FB_Loader{margin-top:0}
+#fb_social_bar_container{position:fixed;left:0;right:0;height:34px;padding:0 25px;z-index:999999999}
+.fb_social_bar_iframe{position:relative;float:right;opacity:0;-moz-opacity:0;filter:alpha(opacity=0)}
+.fb_social_bar_iframe_bottom_ie6{bottom:auto;top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))}
+.fb_social_bar_iframe_top_ie6{bottom:auto;top:expression(eval(document.documentElement.scrollTop-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)))}
+</style></head>
+<body onresize="reloadNowGlobal();">
+<div id="fb-root" class=" fb_reset"><script async="" src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/all.js"></script><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe id="f59fa3daa2ccf0c" name="f1e926fabb85cb5" scrolling="no" class="FB_UI_Hidden" style="border: none; overflow: hidden; height: 240px; width: 575px;" allow="autoplay 'self'; fullscreen 'self'" src="https://web.archive.org/web/20110808204215/http://www.facebook.com/extern/login_status.php?api_key=177116303202&amp;app_id=177116303202&amp;channel_url=https%3A%2F%2Fweb.archive.org%2Fweb%2F20110808204215%2Fhttp%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df720ba8a1416318%26origin%3Dhttp%253A%252F%252Fgoanimate.com%252Ff27e80cec43b46e%26relation%3Dparent.parent%26transport%3Dpostmessage&amp;display=hidden&amp;extern=2&amp;locale=en_US&amp;next=https%3A%2F%2Fweb.archive.org%2Fweb%2F20110808204215%2Fhttp%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df118128aa3ec9da%26origin%3Dhttp%253A%252F%252Fgoanimate.com%252Ff27e80cec43b46e%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2f63cd26b2d05%26result%3D%2522xxRESULTTOKENxx%2522&amp;no_session=https%3A%2F%2Fweb.archive.org%2Fweb%2F20110808204215%2Fhttp%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df1282d82d82d82e%26origin%3Dhttp%253A%252F%252Fgoanimate.com%252Ff27e80cec43b46e%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2f63cd26b2d05&amp;no_user=https%3A%2F%2Fweb.archive.org%2Fweb%2F20110808204215%2Fhttp%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df195e76b1b0a2f1%26origin%3Dhttp%253A%252F%252Fgoanimate.com%252Ff27e80cec43b46e%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2f63cd26b2d05&amp;ok_session=https%3A%2F%2Fweb.archive.org%2Fweb%2F20110808204215%2Fhttp%3A%2F%2Fstatic.ak.fbcdn.net%2Fconnect%2Fxd_proxy.php%3Fversion%3D3%23cb%3Df294af05686fcfa%26origin%3Dhttp%253A%252F%252Fgoanimate.com%252Ff27e80cec43b46e%26relation%3Dparent%26transport%3Dpostmessage%26frame%3Df2f63cd26b2d05&amp;sdk=joey&amp;session_origin=1&amp;session_version=3" data-ruffle-polyfilled=""></iframe></div></div></div>
+<script type="text/javascript">
+  window.fbAsyncInit = function() {
+    FB.init({appId: '177116303202', cookie: true, status: true, xfbml: true});
+    jQuery(document).ready(function() {
+      jQuery(document).trigger('facebook.init');
+    });
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      'https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+
+<script type="text/javascript">
+  var _kmq = _kmq || [];
+  function _kms(u){
+    setTimeout(function(){
+      var s = document.createElement('script'); var f = document.getElementsByTagName('script')[0]; s.type = 'text/javascript'; s.async = true;
+      s.src = u; f.parentNode.insertBefore(s, f);
+    }, 1);
+  }
+  _kms('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/i.js');_kms('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/c5eda915a49e275384d3c74839d61b5584741010.1.js');
+
+</script>
+<script type="text/javascript">
+		jQuery.extend(CCStandaloneBannerAdUI, {"actionshopSWF":"https:\/\/josephcrosmanplays532.github.io\/Old-Vyond-Files\/animation\/old\/actionshop.swf","apiserver":"https:\/\/goanimate2017.herokuapp.com\/","userId":""});
+</script>
+<!-- PAGE STRUCTURE -->
+<div class="container">
+	<!-- HEADER -->
+		<div class="header">
+		<div id="header_underlay"></div>
+		<div class="logo">
+			<a id="gologo" href="index.html" title="GoAnimate">
+				<img alt="GoAnimate logo" src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/logo_ga.gif">
+			</a>
+		</div>
+
+        <div id="headertopnavmenu" class="globalnav">
+	<ul id="top_nav" class="header_block">
+		<li class="top_nav_item create">
+			<a href="videomaker/full">Create</a>
+		</li>
+		<li class="top_nav_item explore">
+			<a href="watch">Explore</a>
+			<ul class="top_nav_submenu">
+				<li class="first"><div class="arrow"></div><a href="videos">Animations</a></li>
+				<li><a href="mingle">Community</a></li>
+				<li><a href="channels">Channels</a></li>
+				<li><a href="http://www.youtube.com/watch?v=kXFmph_kn_8">Contests</a></li>
+			</ul>
+		</li>
+		<li class="top_nav_item help">
+			<a href="https://web.archive.org/web/20110808204216/http://goanimate.com/forums">Forums</a>
+		</li>
+		<li class="top_nav_item search">
+			<a href="https://web.archive.org/web/20110808204216/http://goanimate.com/search"><div id="top_nav_search_icon" title="Search"></div></a>
+		</li>
+		<li class="top_nav_item plus">
+			<a href="https://web.archive.org/web/20110808204216/http://goanimate.com/plusfeatures/?hook=header_button.site">GoPlus+</a>
+		</li>
+	</ul>
+
+	<div id="header_links" class="header_block">
+	<a href="https://app.vyond.com/logoff">Logout</a>
+	</div>
+
+<!--[if lte IE 6]>
+<script type="text/javascript">
+jQuery('#top_nav li').bind('mouseover', function(e) {
+	jQuery(this).addClass('hover');
+});
+jQuery('#top_nav li').bind('mouseout', function(e) {
+	jQuery(this).removeClass('hover');
+});
+jQuery('.money').bind('mouseover', function(e) {
+	jQuery(this).addClass('hover');
+});
+jQuery('.money').bind('mouseout', function(e) {
+	jQuery(this).removeClass('hover');
+});
+</script>
+<![endif]-->        </div>
+
+		<a name="skipmenu"></a>
+    </div>
+	    <div id="feedback_block" style="display:none;">
+	    <div id="feedback" align="center" class="info">
+			    </div>
+    </div>
+</header>
+<main>
+	<table>
+		<thead>
+			<tr>
+				<td></td>
+				<td>Video Title</td>
+				<td>Last Modified</td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody></tbody>
+		<tfoot>
+			<tr>
+				<td colspan="127"><a id="load_more" href="javascript:;">LOAD MORE...</a></td>
+			</tr>
+		</tfoot>
+	</table>
+</main>
+	<style>
+		html {
+			font-family: 'Sailec', Arial, sans-serif;
+			-ms-text-size-adjust: 100%;
+			-webkit-text-size-adjust: 100%;
+		}
+
+		body {
+			margin: 0;
+			background-color: #fff;
+			color: #474747;
+			font-size: 16px;
+			font-weight: 400;
+			line-height: 1.5;
+			position: relative;
+		}
+
+		header {
+			position: sticky;
+			top: 0;
+			width: 100%;
+		}
+
+		header>:nth-child(1) {
+			align-content: center;
+			background-color: #1e1e1e;
+			display: inline-block;
+			padding-bottom: 13px;
+			text-align: center;
+			color: #fff;
+			width: 100%;
+		}
+
+		header>:nth-child(1)>:nth-child(1) {
+			float: left;
+		}
+
+		header>:nth-child(1)>:nth-child(1)>:nth-child(1)>* {
+			margin-left: 10px;
+			margin-top: 7px;
+			height: 30px;
+		}
+
+		header>:nth-child(1)>:nth-child(1)>:nth-child(2) {
+			color: #666;
+			padding-left: 4px;
+			font-weight: 700;
+		}
+
+		header>:nth-child(1)>:nth-child(2) {
+			margin-right: 20px;
+			clear: both;
+		}
+
+		.button_big,
+		.button_small {
+			margin-left: 20px;
+			margin-top: 7px;
+			display: inline-block;
+			padding-top: 5px;
+			padding-bottom: 3px;
+			border-radius: 3px;
+			font-size: 14px;
+			text-decoration: none;
+			color: #fff;
+		}
+
+		.button_big {
+			background-color: #d85e27;
+			width: 160px;
+		}
+
+		.button_big:hover {
+			text-decoration: underline;
+		}
+
+		.button_small:hover {
+			color: #d85e27;
+		}
+
+		.button_big:hover,
+		.button_small:hover {
+			cursor: pointer;
+		}
+
+		.char_dropdown:hover>:nth-child(1) {
+			cursor: context-menu;
+			color: #d85e27;
+		}
+
+		.char_dropdown>menu {
+			position: relative;
+			display: none;
+			top: 100%;
+			left: 0;
+			z-index: 1000;
+			float: left;
+			width: 100%;
+			padding: 10px 0;
+			margin: 9px 0 0;
+			list-style: none;
+			font-size: 14px;
+			text-align: left;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border: 1px solid rgba(0, 0, 0, 0.15);
+			border-radius: 4px;
+			-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+			-webkit-background-clip: padding-box;
+			background-clip: padding-box;
+		}
+
+		.char_dropdown:hover>menu {
+			display: block;
+		}
+
+		.char_dropdown>menu>a {
+			display: block;
+			padding: 2px 20px;
+			clear: both;
+			font-weight: normal;
+			color: #333;
+			text-decoration: none;
+		}
+
+		.char_dropdown>menu>a:hover {
+			color: #d85e27;
+			background-color: #f5f5f5;
+		}
+
+		.char_dropdown>menu>div {
+			height: 1px;
+			margin: 10px 0;
+			background-color: #e5e5e5;
+		}
+
+		.warning {
+			font-size: 14px;
+			padding: 10px 0;
+			background-color: #fd7;
+			text-align: center;
+		}
+
+		.warning::before {
+			font-family: 'GlyphiconsRegular';
+			padding-right: 4px;
+			content: '\E079';
+			font-size: 12px;
+		}
+
+		.warning>a {
+			color: #5596e6;
+		}
+
+		table {
+			width: 100%;
+			max-width: 100%;
+			margin-bottom: 127px;
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: 70px;
+			background-color: transparent;
+			border-collapse: collapse;
+			border-spacing: 0;
+			font-size: 14px;
+		}
+
+		@media(min-width: 768px) {
+			table {
+				width: 750px;
+			}
+
+			tr>:nth-child(2)>* {
+				width: 350px;
+			}
+		}
+
+		@media(min-width: 992px) {
+			table {
+				width: 970px;
+			}
+
+			tr>:nth-child(2)>* {
+				width: 580px;
+			}
+		}
+
+		@media (min-width: 1030px) {
+			header>:nth-child(1) {
+				padding-bottom: 0;
+				height: 44px;
+			}
+
+			header>:nth-child(1)>:nth-child(2) {
+				clear: none;
+				float: right;
+			}
+		}
+
+		@media(min-width: 1200px) {
+			table {
+				width: 1170px;
+			}
+
+			tr>:nth-child(2)>* {
+				width: 780px;
+			}
+		}
+
+		thead {
+			font-weight: 200;
+		}
+
+		td {
+			padding: 8px;
+			vertical-align: middle;
+			line-height: 1.42857143;
+		}
+
+		thead {
+			border-bottom: 2px solid #ddd;
+			border-top: 1px solid #ddd;
+		}
+
+		tbody>tr {
+			border-top: 0;
+			border-bottom: 1px solid #ddd;
+		}
+
+		tbody>tr:hover {
+			background-color: #f5f5f5;
+		}
+
+		tr>:nth-child(1) {
+			width: 64px;
+		}
+
+		tr>:nth-child(1)>img {
+			height: 36px;
+		}
+
+		tr>:nth-child(1) {
+			word-break: break-word;
+		}
+
+		tr>:nth-child(2) {
+			color: #999;
+		}
+
+		tr>:nth-child(2)>:nth-child(1) {
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		tr>:nth-child(2)>:nth-child(2) {
+			font-family: monospace;
+		}
+
+		tr>:nth-child(3) {
+			width: 200px;
+		}
+
+		tr>:nth-child(3)>* {
+			font-family: monospace;
+			display: inline-block;
+			text-align: center;
+			font-size: 14px;
+		}
+
+		tr>:nth-child(4) {
+			font-family: 'GlyphiconsRegular';
+			text-decoration: none;
+			padding-top: 5px;
+			font-size: 14px;
+			width: 80px;
+		}
+
+		tr>:nth-child(4)>a {
+			display: inline-block;
+			text-decoration: none;
+			padding-right: 10px;
+			color: #474747;
+		}
+
+		tr>:nth-child(4)>a:hover {
+			color: #d85e27;
+		}
+
+		tr>:nth-child(4)>:nth-child(1)::before {
+			content: '\E174';
+		}
+
+		tr>:nth-child(4)>:nth-child(2)::before {
+			content: '\E235';
+		}
+
+		tr>:nth-child(4)>:nth-child(3)::before {
+			content: '\E182';
+		}
+
+		tfoot>tr>td {
+			text-align: center;
+			border: none;
+		}
+
+		tfoot>tr>td>a {
+			text-decoration: none;
+			color: #474747;
+			font-size: 14px;
+		}
+
+		form {
+			display: none;
+		}
+
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 100;
+			src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts/Sailec-Thin.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 200;
+			src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts/Sailec-Light.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 400;
+			src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts/Sailec-Regular.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 500;
+			src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts/Sailec-Medium.woff') format('woff');
+		}
+
+		/* font weight 500 and font weight 700 (bold) are the same for better integration support */
+		@font-face {
+			font-family: 'Sailec';
+			font-weight: 700;
+			src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts/Sailec-Medium.woff') format('woff');
+		}
+
+		@font-face {
+			font-family: 'GlyphiconsRegular';
+			src: url('https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/fonts/glyphicons-regular.woff') format('woff');
+			font-weight: normal;
+			font-style: normal;
+		}
+	</style>
+
+
+</div>
+<div class="footerad">
+<!-- GoAnimate_Footer_ROS_Bottom_960x284 -->
+<script type="text/javascript">
+GA_googleFillSlot("GoAnimate_Footer_ROS_Bottom_960x284");
+</script>
+<!-- GoAnimate_Footer_ROS_Bottom_960x284 -->
+</div>
+  <div class="footer clearfix">
+
+<div id="footernav" class="clearfix">
+	<div class="col">
+		<h4>About GoAnimate</h4>
+		<ul>
+			<li><a href="aboutus">Who we are</a></li>
+			<li><a href="https://web.archive.org/web/20110808204216/http://blog.goanimate.com/">Blog</a></li>
+			<li><a href="http://www.youtube.com/watch?v=kXFmph_kn_8" target="_blank">Contests</a></li>
+		</ul>
+	</div>
+	<div class="col">
+		<h4>GoAnimate Solutions</h4>
+		<ul>
+			<li><a href="biz">Commercial Licenses</a></li>
+			<li><a href="biz_affiliate">Affiliate Program</a></li>
+			<li><a href="https://goanimate4schools.herokuapp.com" target="_blank">GoAnimate4Schools</a></li>
+			<li><a href="playerbuilder">GoPlayer Widget</a></li>
+		</ul>
+	</div>
+	<div class="col" style="border:none">
+		<h4>Usage Guidelines</h4>
+		<ul>
+			<li><a href="termsofuse">Terms of Use</a></li>
+			<li><a href="legal">Legal Notices</a></li>
+			<li><a href="privacy">Privacy Policy</a></li>
+		</ul>
+	</div>
+	<div class="col last">
+		<h4>Getting Help</h4>
+		<ul>
+			<script src="https://fast.wistia.com/embed/medias/9z4fah3lag.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_9z4fah3lag popover=true popoverContent=link" style="display:inline;position:relative"><a href="#">Tutorial</a></span>
+			<li><a href="howdoesitwork">Help Videos</a></li>
+			<li><a href="faq">FAQs</a></li>
+			<li><a href="forums">Forums</a></li>
+		</ul>
+	</div>
+</div>
+	</div>
+		<div class="bottomlangbar">
+		<span class="element">Come And Join Theese Google Classrooms!</span>
+		<span class="element">
+			<a href="https://classroom.google.com/c/MjQ1NTc1NzE4Njc2?cjc=zewe6ic">The LVM Group</a>
+		</span>
+		<span class="element">
+			<a href="https://classroom.google.com/c/ODk1NTEyOTY0MzRa?cjc=jmzggtc">Mark Rojas's Livestream Show</a>
+		</span>
+	</div>
+	<!-- END OF FOOTER -->
+
+</div>
+
+<div class="footer_bottom">
+	<div class="copyright">GoAnimate © 2011</div>
+</div>
+
+<div id="studio_container" style="display: none;">
+	<div id="studio_holder"><!-- Full Screen Studio -->
+		<div style="top: 50%; position: relative;">
+			This content requires the Adobe Flash Player 10.0.12. <a href="https://chrome.google.com/webstore/detail/flash-player-for-web-upda/hnicgckkbamlonjfbkdilljeegpbjabo?hl=en">Get Flash</a>
+		</div>
+	</div>
+</div>
+
+<!-- END OF PAGE STRUCTURE -->
+<!-- flex framework -->
+<div>
+	<object width="1" height="1">
+		<param name="MOVIE" value="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/animation/604/Framework_Container.swf">
+		<param name="QUALITY" value="low">
+		<param name="SCALE" value="noborder">
+		<param name="wmode" value="transparent">
+		
+	</object>
+</div>
+<div id="growlfeedback_block" class="growlUI" style="display:none">
+	<div id="growlnotify"><img src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/tick.png" width="52" height="52" onload="javascript:iePngFix(this,52,52);"></div>
+	<div id="growlerror"><img src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/cross.png" width="52" height="52" onload="javascript:iePngFix(this,52,52);"></div>
+	<div class="growlcontent">
+	<div class="growltitle">Notification</div>
+	<div id="growlfeedback">GoAnimate 2011 is currently in development</div>
+	</div>
+</div>
+
+<div id="offer_container">
+</div>
+<script type="text/javascript">
+    </script>
+<div id="darkenScreenObject" style="display:none;">
+</div>
+<div style="display: none; position: absolute; margin-top: 0px; height: 355px; width: 550px; left: 230px; top: 0px; background: none; z-index: 50;" id="overlayObjectGlobal">
+<div id="overlayAlertBox" style="display:none; position: absolute;">
+   <div id="overlayAlertBoxTitle"><span id="overlayAlertBoxTitle"></span></div>
+   <div id="overlay_close" onclick="javascript:hideAlertBox();">&nbsp;</div>
+   <div class="overlaybody" style="text-align: left;float:left; padding: 10px 15px;">
+	<span id="alertBoxMessage"></span><br>
+	<div id="overlayAlertBoxBtn"><input type="button" value="��OK��" onclick="javascript:hideAlertBox();"></div>
+   </div>
+</div><div id="overlayHTMLBox" style="display:none; position: absolute;">
+   <div id="overlayHTMLBoxTitle"><span id="overlayHTMLBoxTitle"></span></div>
+   <div id="overlayHTML_close" onclick="javascript:hideHTMLBox();">&nbsp;</div>
+   <div class="overlaybody" style="text-align: left;float:left; padding: 10px 15px;clear:both;width:470px;">
+	<span id="HTMLBoxMessage"></span>
+   </div>
+   <div id="HTMLBoxTP" style="display:none"></div>
+</div>    <div id="overlayGeneral" style="display:none;width:700px;position:relative;">
+	<div class="overlay_header"><img src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/img_popup_top_700.png" height="37" width="700" onload="javascript:iePngFix(this,700,37)"></div>
+        <div style="float:left; margin:0px; padding: 0px; width:700px;">
+            <div style="float:left; margin:0px; padding: 0px; width:700px;">
+		<span id="tracker_id" style="display:none"></span>
+                <div class="overlay_header_title"><span id="OG_title"></span></div>
+                <div class="overlayClose" id="OG_close_btn"><a href="javascript:goVoid();" onclick="javascript:hideOG();"></a></div>
+                <div style="background-color:#fff; position:relative;float:left;width:700px;">
+		    <div id="OG_content"></div>
+                </div>
+                <div class="overlay_footer"><img src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/img_popup_bottom_700.png" height="30" width="700" onload="javascript:iePngFix(this,700,30)"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://web.archive.org/web/20110808204216/https://ssl." : "https://web.archive.org/web/20110808204216/http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/\
+javascript'%3E%3C/script%3E"));
+</script><script src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/ga.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-2516970-1");
+pageTracker._setDomainName("none");
+
+//pageTracker._setCampSrcKey("goanimate.com");
+
+
+		//alert("Detected Empty Session");
+		pageTracker._setCustomVar(1, "usertype", "NonMember", 2);
+		pageTracker._setCustomVar(2, "level", "", 2);
+		pageTracker._setCustomVar(3, "cohort", "", 2);
+
+
+
+
+pageTracker._trackPageview();
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+_qoptions={"qacct":"p-66CFnJxwubvnE"};
+</script>
+<script type="text/javascript" src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/js/quant.js"></script>
+<noscript>
+<img src="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/img/p-66CFnJxwubvnE.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+<script type="text/javascript">
+	function logSendShareToGA() {
+	if (typeof pageTracker != 'undefined' && pageTracker)
+		pageTracker._trackPageview("/pageTracker/goals/reg/contactform");
+	}
+
+
+var uifrm_path = encodeURI(window.location.pathname);
+uifrm_path = uifrm_path.replace(/\//g, "%2F");
+uifrm = document.createElement("iframe");
+uifrm.setAttribute("name", "usu");
+uifrm.setAttribute("id", "usu");
+uifrm.setAttribute("src", "https://web.archive.org/web/20110808204216/http://usersignup.goanimate.com/tracking?v=1312836136&page=" + uifrm_path);
+uifrm.style.width = "1px";
+uifrm.style.height = "1px";
+uifrm.style.border = "0";
+document.body.appendChild(uifrm);
+
+</script><iframe name="usu" id="usu" src="https://web.archive.org/web/20110808204216/http://usersignup.goanimate.com/tracking?v=1312836136&amp;page=%2Fweb%2F20110808204216%2Fhttp:%2F%2Fgoanimate.com%2Fstudio" style="width: 1px; height: 1px; border: 0px;" allow="autoplay 'self'; fullscreen 'self'" data-ruffle-polyfilled=""></iframe>
+
+
+<!--
+     FILE ARCHIVED ON 20:42:16 Aug 08, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 15:20:10 Feb 24, 2021.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  esindex: 0.01
+  captures_list: 588.141
+  RedisCDXSource: 0.562
+  LoadShardBlock: 70.467 (3)
+  exclusion.robots: 490.032
+  xauthn.identify: 228.514
+  PetaboxLoader3.resolve: 362.724
+  load_resource: 689.991
+  xauthn.chkprivs: 261.184
+  PetaboxLoader3.datanode: 357.474 (4)
+  exclusion.robots.policy: 490.016
+  CDXLines.iter: 19.863 (3)
+--><div style="position: absolute; left: -10px; visibility: hidden;"><ruffle-object type="application/x-shockwave-flash" id="_kmfc" data="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/animation/604/fs.swf" width="1" height="1"><param name="movie" value="https://josephcrosmanplays532.github.io/GoAnimate-2011-Studio/animation/604/fs1.swf"><param name="allowScriptAccess" value="always"><param name="FlashVars" value="k=c5eda915a49e275384d3c74839d61b5584741010"></ruffle-object></div></body><loom-container id="lo-engage-ext-container"><div></div><loom-shadow classname="resolved"></loom-shadow></loom-container></html>  
+	

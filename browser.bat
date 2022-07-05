@@ -1,2 +1,5 @@
 @echo off
-start browser\chrome.exe http://localhost/
+echo Starting Chromium...
+start browser\chrome.exe --allow-outdated-plugins http://localhost/
+exit
+

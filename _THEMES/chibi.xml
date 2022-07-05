@@ -2473,4 +2473,16 @@
 		<state id="msp_ninja_door01_ncc_ninja_door01_open.swf" name="open" enable="Y"/>
 	</prop>
 	<effect id="ncc_jp_sakura.swf" type="ANIME" resize="false" move="false" name="Sakura" enable="Y" is_premium="N" aid="14976" money="0" sharing="0" display_order="0"/>
+        
+<char id="c-1114-5627942" name="MJ, the Spirit" cc_theme_id="chibi" thumbnail_url="0000023" copyable="Y">
+		<tags>chibi,_free,_cat:GoAnimators</tags>
+
+</char>
+<char id="c-1115-7892452" name="Emma's Tv Studio" cc_theme_id="chibi" thumbnail_url="0000024" copyable="Y">
+		<tags>chibi,_free,_cat:GoAnimators</tags>
+</char>
+<char id="c-1116-7295467" name="Mark The Vyonder 2021" cc_theme_id="chibi" thumbnail_url="0000025" copyable="Y">
+                <tags>chibi,_free,_cat:GoAnimators</tags>
+</char>
+
 </theme>

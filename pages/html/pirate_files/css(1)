@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Changa One';
+  font-style: normal;
+  font-weight: normal;
+  src: local('ChangaOne-Regular'), url('http://web.archive.org/web/20111011013102im_/http://themes.googleusercontent.com/static/fonts/changaone/v1/QmTOgNNWM9ly3K3B2X29HC3USBnSvpkopQaUR-2r7iU.ttf') format('truetype');
+}
+
+/*
+     FILE ARCHIVED ON 01:31:02 Oct 11, 2011 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 11:42:09 May 12, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 466.813
+  exclusion.robots: 0.104
+  exclusion.robots.policy: 0.095
+  cdx.remote: 0.069
+  esindex: 0.009
+  LoadShardBlock: 109.73 (3)
+  PetaboxLoader3.datanode: 78.676 (4)
+  CDXLines.iter: 44.807 (3)
+  load_resource: 74.93
+  PetaboxLoader3.resolve: 31.736
+*/

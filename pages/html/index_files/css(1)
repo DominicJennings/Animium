@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Lato Regular'), local('Lato-Regular'), url(http://web.archive.org/web/20140410113458im_/http://themes.googleusercontent.com/static/fonts/lato/v7/v0SdcGFAl2aezM9Vq_aFTQ.ttf) format('truetype');
+}
+
+/*
+     FILE ARCHIVED ON 11:34:58 Apr 10, 2014 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 23:27:45 May 27, 2022.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  exclusion.robots: 0.112
+  exclusion.robots.policy: 0.101
+  RedisCDXSource: 3.223
+  esindex: 0.01
+  LoadShardBlock: 178.099 (6)
+  PetaboxLoader3.datanode: 110.44 (7)
+  CDXLines.iter: 124.39 (3)
+  load_resource: 77.417
+  PetaboxLoader3.resolve: 34.291
+*/

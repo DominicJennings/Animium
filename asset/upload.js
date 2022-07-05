@@ -39,13 +39,7 @@ module.exports = function (req, res, url) {
 		case "/goapi/saveSound/":
 			loadPost(req, res).then(([data, mId]) => {
 				var bytes = Buffer.from(data.bytes, "base64");
-				asset.save(bytes, mId, "voiceover", "ogg");
-			});
-			return true;
-		case "/goapi/saveTemplate/":
-			loadPost(req, res).then(([data, mId]) => {
-				var body = Buffer.from(data.body_zip, "base64");
-				res.end("0" + asset.save(body, mId, "starter", "xml"));
+				res.end("0" + asset.save(bytes, mId, "voiceover", "ogg"));
 			});
 			return true;
 	}

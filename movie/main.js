@@ -4,6 +4,7 @@ const fUtil = require("../misc/file");
 const nodezip = require("node-zip");
 const parse = require("./parse");
 const fs = require("fs");
+const truncate = require("truncate");
 
 module.exports = {
 	/**
@@ -14,7 +15,6 @@ module.exports = {
 	 * @returns {Promise<string>}
 	 */
 	save(movieZip, thumb, oldId, nëwId = oldId) {
-		// Saves the thumbnail of the respective video.
 		if (thumb && nëwId.startsWith("m-")) {
 			const n = Number.parseInt(nëwId.substr(2));
 			const thumbFile = fUtil.getFileIndex("thumb-", ".png", n);
@@ -46,7 +46,7 @@ module.exports = {
 		});
 	},
 	loadZip(mId) {
-		return new Promise((res) => {
+		return new Promise((res, rej) => {
 			const i = mId.indexOf("-");
 			const prefix = mId.substr(0, i);
 			const suffix = mId.substr(i + 1);
@@ -57,10 +57,20 @@ module.exports = {
 					res(data.subarray(data.indexOf(80)));
 					break;
 				}
+				case "s":
 				case "m": {
 					let numId = Number.parseInt(suffix);
 					if (isNaN(numId)) res();
-					let filePath = fUtil.getFileIndex("movie-", ".xml", numId);
+					switch (prefix) {
+						case "s": {
+							var filePath = fUtil.getFileIndex("starter-", ".xml", numId);
+							break;
+						}
+						case "m": {
+							var filePath = fUtil.getFileIndex("movie-", ".xml", numId);
+							break;
+						}
+					}
 					if (!fs.existsSync(filePath)) res();
 
 					const buffer = fs.readFileSync(filePath);
@@ -68,6 +78,7 @@ module.exports = {
 
 					try {
 						parse.packMovie(buffer, mId).then((pack) => {
+						parse.unpackXml(buffer, mId).then(v => res(v));
 							caché.saveTable(mId, pack.caché);
 							res(pack.zipBuf);
 						});
@@ -75,6 +86,41 @@ module.exports = {
 					} catch (e) {
 						res();
 					}
+				}
+				default:
+					res();
+			}
+		});
+	},
+        delete(mId) {
+		return new Promise((res, rej) => {
+			const i = mId.indexOf("-");
+			const prefix = mId.substr(0, i);
+			const suffix = mId.substr(i + 1);
+			switch (prefix) {
+				case "e": {
+					caché.clearTable(mId);
+					let data = fs.readFileSync(`${exFolder}/${suffix}.zip`);
+					res(data.subarray(data.indexOf(80)));
+					break;
+				}
+				case "s":
+				case "m": {
+					let numId = Number.parseInt(suffix);
+					if (isNaN(numId)) res();
+					switch (prefix) {
+						case "s": {
+							var filePath = fUtil.getFileIndex("starter-", ".xml", numId);
+							break;
+						}
+						case "m": {
+							var filePath = fUtil.getFileIndex("movie-", ".xml", numId);
+							break;
+						}
+					}
+					if (!fs.existsSync(filePath)) res();
+
+					fs.unlinkSync(filePath);
 				}
 				default:
 					res();
@@ -107,7 +153,7 @@ module.exports = {
 			}
 		});
 	},
-	loadThumb(movieId) {
+	thumb(movieId) {
 		return new Promise(async (res, rej) => {
 			if (!movieId.startsWith("m-")) return;
 			const n = Number.parseInt(movieId.substr(2));
@@ -125,6 +171,16 @@ module.exports = {
 		}
 		return array;
 	},
+        listStarter() {
+		const array = [];
+		const last = fUtil.getLastFileIndex("starter-", ".xml");
+		for (let c = last; c >= 0; c--) {
+			const movie = fs.existsSync(fUtil.getFileIndex("starter-", ".xml", c));
+			const thumb = fs.existsSync(fUtil.getFileIndex("starter-", ".png", c));
+			if (movie && thumb) array.push(`s-${c}`);
+		}
+		return array;
+	},
 	meta(movieId) {
 		return new Promise(async (res, rej) => {
 			if (!movieId.startsWith("m-")) return;
@@ -137,6 +193,11 @@ module.exports = {
 			const begTitle = buffer.indexOf("<title>") + 16;
 			const endTitle = buffer.indexOf("]]></title>");
 			const title = buffer.slice(begTitle, endTitle).toString().trim();
+
+			const begDesc = buffer.indexOf("<desc>") + 15;
+			const endDesc = buffer.indexOf("]]></desc>");
+			const longDesc = buffer.slice(begDesc, endDesc).toString().trim();
+			const desc = truncate(longDesc, 51);
 
 			const begDuration = buffer.indexOf('duration="') + 10;
 			const endDuration = buffer.indexOf('"', begDuration);
@@ -151,6 +212,7 @@ module.exports = {
 				durationString: durationStr,
 				duration: duration,
 				title: title,
+				desc: desc,
 				id: movieId,
 			});
 		});

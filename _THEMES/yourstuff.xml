@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<theme id="yourstuff" name="Your Stuff">
+
+<background id="./import/images/bg/hi.png" enc_asset_id="hi" name="test import" published="1"><tags></tags></background>
+<char id="1147194" name="BLUE CENTURION=SECTION31" published="1" facing="left" thumb="1147195.swf" default="1147195.swf"><tags/><action id="1147195.swf" name="STAND RIGHT"/><action id="1147200.swf" name="FIRE RIGHT"/><action id="1147201.swf" name="POINT DISRUPTOR"/></char>
