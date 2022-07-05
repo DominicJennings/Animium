@@ -15,3 +15,13 @@ npm start
 start browser.bat
 npm start
 )
+if not exist package-lock.json (
+echo [WARN] Please install Node.js before running the program.
+echo [INFO] Running NPM install...
+npm install
+start browser.bat
+npm start
+) else (
+start browser.bat
+npm start
+)
