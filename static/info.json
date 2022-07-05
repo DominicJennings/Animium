@@ -14,11 +14,18 @@
 			"statusCode": 302,
 			"content": ""
 		},
+		"/html/list.html": {
+			"headers": {
+				"Location": "pages/html/list.html"
+			},
+			"statusCode": 302,
+			"content": ""
+		},
 		"/goapi/getAssetTags": {
 			"headers": {
 				"Content-Type": "application/json"
 			},
-			"content": "111"
+			"content": "[]"
 		},
 		"/crossdomain.xml": {
 			"headers": {
@@ -90,7 +97,7 @@
 				"Content-Type": "image/jpeg"
 			}
 		},
-                "_PROPS/(.*)": {
+                "_PROPS/(.*)(jpg|JPG|jpeg|JPEG)": {
 			"headers": {
 				"Content-Type": "image/jpg"
 			}
@@ -116,10 +123,10 @@
 			}
 		},
 		"pages/js/(.*)(js|JS)$": {
-            "headers": {
-                "Content-Type": "text/javascript; charset=UTF-8"
-            }
-        }
+			"headers": {
+				"Content-Type": "text/javascript; charset=UTF-8"
+			}
+		}
 	},
 	"POST": {
 		"/goapi/getUserWatermarks/": {
