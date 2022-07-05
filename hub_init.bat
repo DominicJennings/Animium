@@ -3,11 +3,12 @@
 ::            Made by Kia           ::
 ::       https://anistick.com       ::
 set LAUNCHER_RUN=nofolder
-if %1 == %LAUNCHER_RUN% ( goto inst ) else ( goto noinst )
+if not exist installed goto inst
+if exist installed goto inst
 :inst
 npm install
-exit
+echo Installed >> installed
+goto noinst
 :noinst
-No Node.js installation needed.
 start npm start
-exit
+pause
