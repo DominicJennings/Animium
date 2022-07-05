@@ -8,6 +8,7 @@ const chs = require("./character/save");
 const cht = require("./character/thmb");
 const chu = require("./character/upload");
 const mvu = require("./movie/upload");
+const mvr = require("./movie/redirect");
 const svu = require("./starter/upload");
 const asu = require("./asset/upload");
 const stl = require("./static/load");
@@ -29,7 +30,7 @@ const sts = require("./starter/save");
 const stt = require("./starter/thmb");
 const url = require("url");
 
-const functions = [mvL, svu, svL, pmc, asl, chl, thl, thL, chs, chu, cht, asL, tsl, chr, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl, sts, stt];
+const functions = [mvL, svu, svL, pmc, asl, chl, thl, thL, chs, chu, cht, asL, tsl, chr, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl, sts, mvr, stt];
 
 // Creates an HTTP server
 module.exports = http
