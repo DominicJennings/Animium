@@ -9,11 +9,11 @@ const loadPost = require("../misc/post_body");
  */
 module.exports = async function (req, res, url) {
 	if (req.method != "POST" || url.pathname != "/goapi/getWaveform/") return;
-  loadPost(req, res).then(data => {
-    const { wfid: wfId } = data;
+	loadPost(req, res).then(data => {
+		const { wfid: wfId } = data;
 
-    const waveform = wf.load(wfId);
-    waveform ? (res.statusCode = 200, res.end(waveform)) : (res.statusCode = 404, res.end());
-    return true;
-  });
+		const waveform = wf.load(wfId);
+		waveform ? (res.statusCode = 200, res.end(waveform)) : (res.statusCode = 404, res.end());
+		return true;
+	});
 }
