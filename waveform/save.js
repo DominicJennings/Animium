@@ -12,10 +12,10 @@ module.exports = function (req, res, url) {
   if (req.method != "POST" || url.path != "/goapi/saveWaveform/") return;
 	loadPost(req, res).then(data => {
 
-    const { wfid: wfId, waveform } = data;
+		const { wfid: wfId, waveform } = data;
 
-    wf.save(waveform, wfId);
-    res.end("0");
-    return true;
-  });
+		const waveformId = wf.save(waveform, wfId);
+		res.end("0" + waveformId);
+		return true;
+	});
 };
