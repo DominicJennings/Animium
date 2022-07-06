@@ -35,7 +35,6 @@ async function listAssets(data, makeZip) {
 				.join("")}</ugc>`;
 			break;
 		}
-
 		case "movie": {
 			files = starter.list()
 			xmlString = `${header}<ugc more="0">${files
