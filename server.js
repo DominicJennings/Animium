@@ -21,8 +21,6 @@ const mvL = require("./movie/list");
 const svL = require("./starter/list");
 const mvm = require("./movie/meta");
 const mvs = require("./movie/save");
-const wfl = require("./waveform/load");
-const wfs = require("./waveform/save");
 const mvt = require("./movie/thmb");
 const thL = require("./theme/list");
 const thl = require("./theme/load");
@@ -32,7 +30,7 @@ const sts = require("./starter/save");
 const stt = require("./starter/thmb");
 const url = require("url");
 
-const functions = [mvL, svu, wfl, wfs, svL, pmc, asl, chl, thl, thL, chs, chu, cht, asL, tsl, chr, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl, sts, mvr, stt];
+const functions = [mvL, svu, svL, pmc, asl, chl, thl, thL, chs, chu, cht, asL, tsl, chr, ast, mvm, mvl, mvs, mvt, tsv, asu, mvu, stp, stl, sts, mvr, stt];
 
 // Creates an HTTP server
 module.exports = http
