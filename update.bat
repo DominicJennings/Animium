@@ -4,7 +4,7 @@
 ::      https://anistick.com      ::
 :: delete the node_modules folder and package-lock.json file before the update.
 if exist node_modules ( rd /q /s node_modules || echo Error deleting the node_modules folder. && set ERROR_OCCURED_ONCE=y ) 
-if exist package-lock.json ( del package-lock.json || echo Error deleting the package-lock.json file. && goto errorSeting )
+if exist package-lock.json ( del package-lock.json || echo Error deleting the package-lock.json file. && goto errorSetting )
 :errorSetting
 :: set error vars if something went wrong.
 if "%ERROR_OCCURED_ONCE%"=="" ( set ERROR_OCCURED_ONCE=y ) else ( set ERROR_OCCURED_TWICE=y )
