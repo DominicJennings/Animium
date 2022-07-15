@@ -10,39 +10,49 @@ const loginvars = require('./loginvars');
 var prompt = require("prompt-sync")();
 
 // Variables
-var username = prompt("Username: ");
-var password = prompt("Password: ");
+var isGuest = prompt("Would you like to use guest mode [y/n]: ");
+var username = null;
+var password = null;
+isGuest = isGuest.toLowerCase();
+if (isGuest == "y") {
+	loginvars.saveGuest();
+    console.log("Guest mode is activated!");
+    require("./server");
+} else {
+	username = prompt("Username: ");
+	password = prompt("Password: ");
+	// Password hasher
+    var hpass = crypto.createHash('md5').update(password).digest('hex');
 
-// Password hasher
-var hpass = crypto.createHash('md5').update(password).digest('hex');
+    // Environment variables
+    const env = Object.assign(process.env, require("./env"), require("./config"));
 
-// Environment variables
-const env = Object.assign(process.env, require("./env"), require("./config"));
-
-// API request
-const options = {
-  hostname: env.API_URL,
-  port: 443,
-  path: env.API_ENDPOINT + `?username=${username}&password=${hpass}`,
-  method: 'GET'
-};
-
-const req = https.request(options, (res) => {
-    if (res.statusCode == 200) {
-      loginvars.saveUser(username);
-      console.log(`Successfully logged in as "${username}"!`);
-      require("./server");
-    } else {
-      loginvars.saveGuest();
-      console.log("Guest mode is activated!");
-      require("./server");
+    // API request
+    const options = {
+      hostname: env.API_URL,
+      port: 443,
+      path: env.API_ENDPOINT + `?usrn=${username}&pswd=${hpass}`,
+      method: 'GET'
     };
 
-  res.on('data', (d) => {
-  });
-});
+    const req = https.request(options, (res) => {
+        if (res.statusCode == 200) {
+            loginvars.saveUser(username);
+            console.log(`Successfully logged in as "${username}"!`);
+            require("./server");
+        } else {
+			console.log("Incorrect password.");
+			console.log("To try again, re-launch Anistick Studio / Animium. Entering guest mode.")
+			loginvars.saveGuest();
+			require("./server");
+        };
 
-req.on('error', (e) => {
-  console.error(e);
-});
-req.end(); 
+      res.on('data', (d) => {
+      });
+    });
+
+    req.on('error', (e) => {
+      console.error(e);
+    });
+    req.end();
+};

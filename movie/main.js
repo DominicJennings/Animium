@@ -16,6 +16,7 @@ module.exports = {
 	 */
 	save(movieZip, thumb, oldId, nëwId = oldId) {
 		if (thumb && nëwId.startsWith("m-")) {
+			console.log(nëwId);
 			const n = Number.parseInt(nëwId.substr(2));
 			const thumbFile = fUtil.getFileIndex("thumb-", ".png", n);
 			fs.writeFileSync(thumbFile, thumb);
