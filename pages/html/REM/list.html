@@ -2,8 +2,8 @@
 	<header>
 		<div>
 			<div>
-				<a href="https://www.anistick.com/studio.php"><img src="https://imagedelivery.net/AJ83xT-fEgXqaMekWULFDg/742e3d83-a82d-4298-7b67-6ff5bfec3400/public" alt="Anistick Studio Logo"/></a>
-				<span>Version 3.0.1</span>
+				<a href="//anistick.com/studio.php"><img src="//imagedelivery.net/AJ83xT-fEgXqaMekWULFDg/742e3d83-a82d-4298-7b67-6ff5bfec3400/public" alt="Anistick Studio Logo"/></a>
+				<span>Version 3.0.0</span>
 			</div>
 			<div>
 				<a class="button_small" onclick="document.getElementById('file').click()">UPLOAD A MOVIE</a>
@@ -15,6 +15,7 @@
 						<a href="/cc?themeId=family&bs=bob">Bob</a>
 						<a href="/cc?themeId=family&bs=rocky">Rocky</a>
 						<div></div>
+						<!--
 						<a href="/cc?themeId=business&bs=default">Business</a>
 						<a href="/cc?themeId=business&bs=heavy">Heavy</a>
 						<a href="/cc?themeId=business&bs=kid">Kid</a>
@@ -22,6 +23,7 @@
 						<a href="/cc?themeId=whiteboard&bs=default">Whiteboard</a>
 						<a href="/cc?themeId=whiteboard&bs=kid">Whiteboard (Kid)</a>
 						<div></div>
+						-->
 						<a href="/cc?themeId=anime&bs=guy">Guy (Anime)</a>
 						<a href="/cc?themeId=anime&bs=girl">Girl (Anime)</a>
 						<div></div>
@@ -46,11 +48,10 @@
 						<a href="/cc_browser?themeId=ninja">Chibi Ninjas</a>
 					</menu>
 				</div>
-                                <a href="starter.html" class="button_small">YOUR STARTERS</a>
 				<a href="/go_full" class="button_big">MAKE A VIDEO</a>
 			</div>
 		</div>
-		<div class="warning"><strong>Anistick Studio (Animium) 3.0.1 has officially released! We have added the following:<br>Release Notes, Account Systems (alpha), Importing fixes</strong>
+		<div class="warning"><strong>Anistick Studio (Animium) 3 (3.0.0) has officially released! We have added the following:<br>Release Notes, Account Systems (alpha), Importing fixes</strong>
 		</div>
 	</header>
 	<table>
@@ -92,7 +93,7 @@
 				const tbl = json[c];
 				const date = tbl.date.substr(0, 10) + ' ' + tbl.date.substr(11);
 				tbody.insertAdjacentHTML('beforeend',
-					'<tr id="' + tbl.id + '"><td><img src="/movie_thumbs/' + tbl.id + '.png"></td><td><div>' + tbl.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date + '</span></td><td><a href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a href="/go_full?movieId=' + tbl.id + '"></a><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a><a href="javascript:;" onclick="deleteMovie(\'' + tbl.id + '\')"></td></tr>');
+					'<tr><td><img src="/movie_thumbs/' + tbl.id + '.png"></td><td><div>' + tbl.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</div><div>' + tbl.durationString + '</div></div></td><td><span>' + date + '</span></td><td><a href="javascript:;" onclick="popup(\'' + tbl.id + '\')"></a><a href="/go_full?movieId=' + tbl.id + '"></a><a href="/movies/' + tbl.id + '.xml" download="' + tbl.title + '"></a></td></tr>');
 			}
 		}
 
@@ -105,12 +106,6 @@
 
 		function popup(id) {
 			window.open('/player?movieId=' + id, 'MsgWindow', 'width=1280,height=723,left=' + (screen.width / 2 - 640) + ',top=' + (screen.height / 2 - 360));
-		}
-                function deleteMovie(id) {
-			const xhttp = new XMLHttpRequest();
-		        xhttp.open('POST', `/ajax/deleteMovie/?movieId=${id}`);
-		        xhttp.send();
-                        document.getElementById(`${id}`).style.display = "none";
 		}
 	</script>
 	<style>
@@ -256,7 +251,6 @@
 			background-color: #fd7;
 			text-align: center;
 		}
-
 
 		.warning>a {
 			color: #5596e6;
@@ -406,10 +400,6 @@
 
 		tr>:nth-child(4)>:nth-child(3)::before {
 			content: '\E182';
-		}
-
-                tr>:nth-child(4)>:nth-child(4)::before {
-			content: '\E017';
 		}
 
 		tfoot>tr>td {

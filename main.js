@@ -1,11 +1,12 @@
 /*
-Anistick 3.0.0 Launcher
+Anistick 3.0.1 Launcher
 Made by the Anistick Team
 */
 
 // Modules
 const https = require('node:https');
 const crypto = require('crypto');
+const loginvars = require('./loginvars');
 var prompt = require("prompt-sync")();
 
 // Variables
@@ -14,8 +15,10 @@ var password = prompt("Password: ");
 
 // Password hasher
 var hpass = crypto.createHash('md5').update(password).digest('hex');
-// assign stuff to process.env.
+
+// Environment variables
 const env = Object.assign(process.env, require("./env"), require("./config"));
+
 // API request
 const options = {
   hostname: env.API_URL,
@@ -26,19 +29,11 @@ const options = {
 
 const req = https.request(options, (res) => {
     if (res.statusCode == 200) {
-      env.SAVED_FOLDER = `./_SAVED/${username}`;
-      env.PROP_THUMB_FOLDER = `./_PROPS/${username}`;
-      env.VIDEOS_FOLDER = `./_VIDEOS/${username}`;
-      env.WAVEFORMS_FOLDER = `./_WAVEFORMS/${username}`;
-      env.CACHÉ_FOLDER = `./_CACHÉ/${username}`;
+      loginvars.saveUser(username);
       console.log(`Successfully logged in as "${username}"!`);
       require("./server");
     } else {
-      env.SAVED_FOLDER = "./_SAVED";
-      env.PROP_THUMB_FOLDER = "./_PROPS";
-      env.VIDEOS_FOLDER = "./_VIDEOS";
-      env.WAVEFORMS_FOLDER = "./_WAVEFORMS";
-      env.CACHÉ_FOLDER = "./_CACHÉ";
+      loginvars.saveGuest();
       console.log("Guest mode is activated!");
       require("./server");
     };
