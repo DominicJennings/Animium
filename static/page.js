@@ -31,7 +31,8 @@ module.exports = function (req, res, url) {
 	if (req.method != "GET") return;
 	const query = url.query;
 
-	var attrs, params, title, makeCenter;
+	var attrs, params, title, makeCenter, ut;
+	if (process.env.LOGED_IN == "Y") { ut = "23"; } else { ut = "10"; }
 	switch (url.pathname) {
 		case "/cc": {
 			title = 'Character Creator';
@@ -50,7 +51,7 @@ module.exports = function (req, res, url) {
 					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
 					original_asset_id: query["id"] || null,
 					themeId: "family",
-					ut: 60,
+					ut: ut,
 					bs: "adam",
 					appCode: "go",
 					page: "",
@@ -83,7 +84,7 @@ module.exports = function (req, res, url) {
 					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
 					original_asset_id: query["id"] || null,
 					themeId: "family",
-					ut: 30,
+					ut: ut,
 					appCode: "go",
 					page: "",
 					siteId: "go",
@@ -121,7 +122,7 @@ module.exports = function (req, res, url) {
 					storePath: process.env.STORE_URL + "/<store>",
 					isEmbed: 1,
 					ctc: "go",
-					ut: 60,
+					ut: ut,
 					bs: "default",
 					appCode: "go",
 					page: "",
@@ -157,7 +158,7 @@ module.exports = function (req, res, url) {
 				flashvars: {
 					apiserver: "/",
 					storePath: process.env.STORE_URL + "/<store>",
-					ut: 30,
+					ut: ut,
 					autostart: 1,
 					isWide: 1,
 					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
@@ -181,7 +182,7 @@ module.exports = function (req, res, url) {
 				flashvars: {
 					apiserver: "/",
 					storePath: process.env.STORE_URL + "/<store>",
-					ut: 30,
+					ut: ut,
 					autostart: 0,
 					isWide: 1,
 					clientThemePath: process.env.CLIENT_URL + "/<client_theme>",
