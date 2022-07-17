@@ -1,6 +1,5 @@
 const loadPost = require("../misc/post_body");
 const asset = require("./main");
-const character = require("../character/main");
 const http = require("http");
 
 /**
@@ -50,10 +49,7 @@ module.exports = function (req, res, url) {
 				case "/goapi/deleteAsset/": {
 					loadPost(req, res).then(([data, mId]) => {
 						const aId = data.assetId || data.enc_asset_id;
-						/* 
-						honestly, char deleting is for the dev channel anyway and it may break on you anyway as well. 
-						So lets just delete regular assets instead.
-						*/
+						// the script for char deleting goes here.
 						const b = asset.delete(mId, aId);
 						if (b) {
 							res.end(b);
