@@ -2,9 +2,9 @@
 	<header>
 		<div>
 			<div>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 				<a href="https://www.anistick.com/studio.php"><img src="https://imagedelivery.net/AJ83xT-fEgXqaMekWULFDg/742e3d83-a82d-4298-7b67-6ff5bfec3400/public" alt="Anistick Studio Logo"/></a>
 				<span>Version 3.0.2</span>
 			</div>
@@ -106,11 +106,11 @@
 			loadRows();
 		}
     
-    function deleteChar(id) {
-      const xhttp = new XMLHttpRequest();
-      xhttp.open('POST', `/ajax/deleteChar/?movieId=${id}`);
-      xhttp.send();
-      document.getElementById(`${id}`).style.display = "none";
+		function deleteChar(id) {
+			const xhttp = new XMLHttpRequest();
+			xhttp.open('POST', `/ajax/deleteChar/?movieId=${id}`);
+			xhttp.send();
+			document.getElementById(`${id}`).style.display = "none";
 		}
 	</script>
 	<style>
