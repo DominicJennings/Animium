@@ -129,6 +129,47 @@ module.exports = {
 		});
 	},
 	/**
+	 * @param {string} id
+	 * @returns {Promise<Buffer>}
+	 */
+	delete(id) {
+		return new Promise((res, rej) => {
+			var i = id.indexOf("-");
+			var prefix = id.substr(0, i);
+			var suffix = id.substr(i + 1);
+
+			switch (prefix) {
+				case "c":
+				case "C":
+					fs.unlinkSync(getCharPath(id), (e, b) => {
+						if (e) {
+							var fXml = util.xmlFail();
+							rej(Buffer.from(fXml));
+						} else {
+							res(b);
+						}
+					});
+					break;
+			}
+		});
+	},
+	/**
+	 * @param {string} id
+	 * @returns {Promise<Buffer>}
+	 */
+	deleteThumb(id) {
+		return new Promise((res, rej) => {
+			fs.unlinkSync(getThumbPath(id), (e, b) => {
+				if (e) {
+					var fXml = util.xmlFail();
+					rej(Buffer.from(fXml));
+				} else {
+					res(b);
+				}
+			});
+		});
+	},
+	/**
 	 * @param {Buffer} data
 	 * @param {string} id
 	 * @returns {Promise<string>}
@@ -176,6 +217,23 @@ module.exports = {
 				} else {
 					res(b);
 				}
+			});
+		});
+	},
+	meta(movieId) {
+		return new Promise(async (res, rej) => {
+			if (!movieId.startsWith("c-")) return;
+			const n = Number.parseInt(movieId.substr(2));
+			const fn = fUtil.getFileIndex("char-", ".xml", n);
+
+			const fd = fs.openSync(fn, "r");
+			const buffer = Buffer.alloc(256);
+			fs.readSync(fd, buffer, 0, 256, 0);
+
+			fs.closeSync(fd);
+			res({
+				date: fs.statSync(fn).mtime,
+				id: movieId,
 			});
 		});
 	},
