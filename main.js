@@ -1,58 +1,64 @@
 /*
-Anistick 3.0.1 Launcher
-Made by the Anistick Team
+Anistick Launcher
 */
+const env = Object.assign(process.env, require("./env"), require("./config"));
+// modules
+const { app, BrowserWindow, Menu } = require("electron");
+const fs = require("fs");
+const path = require("path");
+let pluginName;
+switch (process.platform) {
+	case "win32": {
+		pluginName = "./extensions/pepflashplayer.dll";
+		break;
+	} case "darwin": {
+		pluginName = "./extensions/PepperFlashPlayer.plugin";
+		break;
+	} case "linux": {
+		pluginName = "./extensions/libpepflashplayer.so";
+		// i don't know what this does but it makes flash work
+		app.commandLine.appendSwitch("no-sandbox");
+		break;
+	}
+}
+app.commandLine.appendSwitch("ppapi-flash-path", path.join(__dirname, pluginName));
+app.commandLine.appendSwitch("ppapi-flash-version", "32.0.0.371");
 
-// Modules
-const https = require('node:https');
-const crypto = require('crypto');
-const loginvars = require('./loginvars');
-var prompt = require("prompt-sync")();
+let mainWindow;
+const createWindow = () => {
+	mainWindow = new BrowserWindow({
+		width: 1200,
+		height: 700,
+		title: "Anistick Studio",
+		icon: path.join(__dirname, "./server/favicon.ico"),
+		webPreferences: {
+			plugins: true,
+			contextIsolation: true
+		}
+	});
+	// use it in external scripts
+	process.env.MAIN_WINDOW_ID = mainWindow.id;
 
-// Variables
-var isGuest = prompt("Would you like to use guest mode [y/n]: ");
-var username = null;
-var password = null;
-isGuest = isGuest.toLowerCase();
-if (isGuest == "y") {
-	loginvars.saveGuest();
-    console.log("Guest mode is activated!");
-    require("./server");
-} else {
-	username = prompt("Username: ");
-	password = prompt("Password: ");
-	// Password hasher
-    var hpass = crypto.createHash('md5').update(password).digest('hex');
+	// initialize stuff
+	// clear the menu bar
+	Menu.setApplicationMenu(Menu.buildFromTemplate([]));
+	// load the video list
+	mainWindow.loadURL("http://localhost");
+	mainWindow.on("closed", () => mainWindow = null);
 
-    // Environment variables
-    const env = Object.assign(process.env, require("./env"), require("./config"));
-
-    // API request
-    const options = {
-      hostname: env.API_URL,
-      port: 443,
-      path: env.API_ENDPOINT + `?usrn=${username}&pswd=${hpass}`,
-      method: 'GET'
-    };
-
-    const req = https.request(options, (res) => {
-        if (res.statusCode == 200) {
-            loginvars.saveUser(username);
-            console.log(`Successfully logged in as "${username}"!`);
-            require("./server");
-        } else {
-			console.log("Incorrect password.");
-			console.log("To try again, re-launch Anistick Studio / Animium. Entering guest mode.")
-			loginvars.saveGuest();
-			require("./server");
-        };
-
-      res.on('data', (d) => {
-      });
-    });
-
-    req.on('error', (e) => {
-      console.error(e);
-    });
-    req.end();
+	// debug stuff
+	if (env.NODE_ENV == "development") {
+		mainWindow.webContents.openDevTools();
+	}
 };
+
+app.whenReady().then(() => {
+	// wait for the server
+	setTimeout(createWindow, 2000);
+});
+app.on("window-all-closed", () => {
+	if (process.platform !== "darwin") app.quit();
+});
+app.on("activate", () => {
+	if (mainWindow === null) createWindow();
+});
