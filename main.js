@@ -1,6 +1,7 @@
 /*
 Anistick Launcher
 */
+require("./server");
 const env = Object.assign(process.env, require("./env"), require("./config"));
 // modules
 const { app, BrowserWindow, Menu } = require("electron");
