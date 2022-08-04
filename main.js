@@ -31,7 +31,7 @@ const createWindow = () => {
 		width: 1200,
 		height: 700,
 		title: "Anistick Studio",
-		icon: path.join(__dirname, "./server/favicon.ico"),
+		icon: path.join(__dirname, "./favicon.ico"),
 		webPreferences: {
 			plugins: true,
 			contextIsolation: true
