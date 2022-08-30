@@ -24,8 +24,8 @@ switch (platform) {
 		break;
 	}
 }
-ternimal.commandLine.appendSwitch("ppapi-flash-path", path.join(__dirname, pluginName));
-ternimal.commandLine.appendSwitch("ppapi-flash-version", "32.0.0.371");
+ternimal.appendSwitch("ppapi-flash-path", path.join(__dirname, pluginName));
+ternimal.appendSwitch("ppapi-flash-version", "32.0.0.371");
 
 let mainWindow;
 const createWindow = () => {
