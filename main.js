@@ -8,7 +8,9 @@ const { app, BrowserWindow, Menu } = require("electron");
 const fs = require("fs");
 const path = require("path");
 let pluginName;
-switch (process.platform) {
+const platform = process.platform;
+const ternimal = app.commandLine;
+switch (platform) {
 	case "win32": {
 		pluginName = "./extensions/pepflashplayer.dll";
 		break;
@@ -18,12 +20,12 @@ switch (process.platform) {
 	} case "linux": {
 		pluginName = "./extensions/libpepflashplayer.so";
 		// i don't know what this does but it makes flash work
-		app.commandLine.appendSwitch("no-sandbox");
+		ternimal.appendSwitch("no-sandbox");
 		break;
 	}
 }
-app.commandLine.appendSwitch("ppapi-flash-path", path.join(__dirname, pluginName));
-app.commandLine.appendSwitch("ppapi-flash-version", "32.0.0.371");
+ternimal.commandLine.appendSwitch("ppapi-flash-path", path.join(__dirname, pluginName));
+ternimal.commandLine.appendSwitch("ppapi-flash-version", "32.0.0.371");
 
 let mainWindow;
 const createWindow = () => {
