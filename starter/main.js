@@ -1,4 +1,4 @@
-const exFolder = process.env.EXAMPLE_FOLDER;
+const folder = process.env.SAVED_FOLDER;
 const caché = require("../asset/caché");
 const fUtil = require("../misc/file");
 const nodezip = require("node-zip");
@@ -12,107 +12,31 @@ module.exports = {
 	 * @param {Buffer} starterZip
 	 * @returns {Promise<string>}
 	 */
-	save(starterZip, thumb) {
+	save(starterZip, thumb, mId = false) {
 		return new Promise(async (res, rej) => {
-			var sId = fUtil.getNextFileId("starter-", ".xml");
 			var zip = nodezip.unzip(starterZip);
-			
-			const thumbFile = fUtil.getFileIndex("starter-", ".png", sId);
+			var sId, thumbFile, path, resD;
+			if (!mId) {
+				sId = fUtil.getNextFileId("starter-", ".xml");
+				thumbFile = fUtil.getFileIndex("starter-", ".png", sId);
+				path = fUtil.getFileIndex("starter-", ".xml", sId);
+				resD = `s-${sId}`;
+			} else {
+				sId = mId;
+				thumbFile = `${folder}/${sId}.png`;
+				path = `${folder}/${sId}.xml`;
+				resD = sId;
+			}
 			fs.writeFileSync(thumbFile, thumb);
-			var path = fUtil.getFileIndex("starter-", ".xml", sId);
 			var writeStream = fs.createWriteStream(path);
-			var assetBuffers = caché.loadTable(sId);
-			parse.unpackMovie(zip, thumb, assetBuffers).then((data) => {
+			parse.unpackMovie(zip, thumb).then((data) => {
 				writeStream.write(data, () => {
 					writeStream.close();
-					res("s-" + sId);
+					res(resD);
 				});
 			});
 				
 				
-		});
-	},
-	delete(mId) {
-		return new Promise(async (res, rej) => {
-			var i = mId.indexOf("-");
-			var prefix = mId.substr(0, i);
-			var suffix = mId.substr(i + 1);
-			switch (prefix) {
-				case "m":
-					var moviePath = fUtil.getFileIndex("movie-", ".xml", suffix);
-					var thumbPath = fUtil.getFileIndex("thumb-", ".png", suffix);
-					fs.unlinkSync(moviePath);
-					fs.unlinkSync(thumbPath);
-					caché.clearTable(mId);
-					res(mId);
-					break;
-				
-				default:
-					rej();
-			}
-		});
-	},
-	loadZip(mId) {
-		return new Promise((res, rej) => {
-			const i = mId.indexOf("-");
-			const prefix = mId.substr(0, i);
-			const suffix = mId.substr(i + 1);
-			switch (prefix) {
-				case "e": {
-					caché.clearTable(mId);
-					let data = fs.readFileSync(`${exFolder}/${suffix}.zip`);
-					res(data.subarray(data.indexOf(80)));
-					break;
-				}
-				case "m": {
-					let numId = Number.parseInt(suffix);
-					if (isNaN(numId)) res();
-					let filePath = fUtil.getFileIndex("movie-", ".xml", numId);
-					if (!fs.existsSync(filePath)) res();
-
-					const buffer = fs.readFileSync(filePath);
-					if (!buffer || buffer.length == 0) res();
-
-					try {
-						parse.packMovie(buffer, mId).then((pack) => {
-						parse.packXml(buffer, mId).then(v => res(v));
-							caché.saveTable(mId, pack.caché);
-							res(pack.zipBuf);
-						});
-						break;
-					} catch (e) {
-						res();
-					}
-				}
-				default:
-					res();
-			}
-		});
-	},
-	loadXml(movieId) {
-		return new Promise(async (res, rej) => {
-			const i = movieId.indexOf("-");
-			const prefix = movieId.substr(0, i);
-			const suffix = movieId.substr(i + 1);
-			switch (prefix) {
-				case "m": {
-					const fn = fUtil.getFileIndex("movie-", ".xml", suffix);
-					if (fs.existsSync(fn)) res(fs.readFileSync(fn));
-					else rej();
-					break;
-				}
-				case "e": {
-					const fn = `${exFolder}/${suffix}.zip`;
-					if (!fs.existsSync(fn)) return rej();
-					parse
-						.unpackMovie(nodezip.unzip(fn))
-						.then((v) => res(v))
-						.catch((e) => rej(e));
-					break;
-				}
-				default:
-					rej();
-			}
 		});
 	},
 	thumb(movieId) {
@@ -126,7 +50,14 @@ module.exports = {
 	list() {
 		const table = [];
 		var ids = fUtil.getValidFileIndicies("starter-", ".xml");
-		for (const i in ids) {
+		if (!ids) fs.readdirSync(folder).forEach(fn => {
+			if (!fn.includes(".xml") && !fn.includes("starter-")) return;
+			// check if the starter and thumbnail exists
+			const sId = fn.substring(0, fn.length - 4);
+			const starter = fs.existsSync(`${folder}/${sId}.xml`);
+			const thumb = fs.existsSync(`${folder}/${sId}.png`);
+			if (starter && thumb) table.unshift({ id: sId });
+		}); else for (const i in ids) {
 			var id = `s-${ids[i]}`;
 			table.unshift({ id: id });
 		}
