@@ -1,4 +1,5 @@
 const exFolder = process.env.EXAMPLE_FOLDER;
+const folder = process.env.SAVED_FOLDER;
 const caché = require("../asset/caché");
 const fUtil = require("../misc/file");
 const nodezip = require("node-zip");
@@ -88,8 +89,7 @@ module.exports = {
 						res();
 					}
 				}
-				default:
-					res();
+				default: res(fs.readFileSync(`${folder}/${mId}.xml`));
 			}
 		});
 	},
@@ -123,8 +123,11 @@ module.exports = {
 
 					fs.unlinkSync(filePath);
 				}
-				default:
-					res();
+				default: {
+					fs.unlinkSync(`${folder}/${mId}.xml`);
+					fs.unlinkSync(`${folder}/${mId}.png`);
+					return true;
+				}
 			}
 		});
 	},
@@ -149,17 +152,19 @@ module.exports = {
 						.catch((e) => rej(e));
 					break;
 				}
-				default:
-					rej();
+				default: res(fs.readFileSync(`${folder}/${movieId}.xml`));
 			}
 		});
 	},
 	thumb(movieId) {
 		return new Promise(async (res, rej) => {
-			if (!movieId.startsWith("m-")) return;
-			const n = Number.parseInt(movieId.substr(2));
-			const fn = fUtil.getFileIndex("thumb-", ".png", n);
-			isNaN(n) ? rej() : res(fs.readFileSync(fn));
+			const movieThumb = `${folder}/${movieId}.png`;
+			if (!movieId.startsWith("m-")) isNaN(movieThumb) ? rej() : res(fs.readFileSync(movieThumb));
+			else {
+				const n = Number.parseInt(movieId.substr(2));
+				const fn = fUtil.getFileIndex("thumb-", ".png", n);
+				isNaN(n) ? rej() : res(fs.readFileSync(fn));
+			}
 		});
 	},
 	list() {
