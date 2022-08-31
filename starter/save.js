@@ -13,7 +13,7 @@ module.exports = function (req, res, url) {
 	loadPost(req, res).then(([data, sId]) => {
 		var body = Buffer.from(data.body_zip, "base64");
 		var thumb = data.thumbnail_large && Buffer.from(data.thumbnail_large, "base64");
-		starter.save(body, thumb).then((nId) => res.end("0" + nId));
+		starter.save(body, thumb, data.movieId).then((nId) => res.end("0" + nId));
 	});
 	return true;
 };
