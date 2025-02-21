@@ -354,60 +354,57 @@ module.exports = (voiceName, text) => {
 				break;
 			}
 			*/
-			case "readloud": {
-				const req = https.request(
-					{
-						host: "readloud.net",
-						port: 443,
-						path: voice.arg,
-						method: "POST",
-						headers: {
-							"Content-Type": "application/x-www-form-urlencoded",
-							"User-Agent":
-								"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36",
+				case "readloud": {
+					const req = https.request(
+						{
+							hostname: "101.99.94.14",														
+							path: voice.arg,
+							method: "POST",
+							headers: { 			
+								Host: "tts.town",					
+								"Content-Type": "application/x-www-form-urlencoded"
+							}
 						},
-					},
-					(r) => {
-						var buffers = [];
-						r.on("data", (d) => buffers.push(d));
-						r.on("end", () => {
-							const html = Buffer.concat(buffers);
-							const beg = html.indexOf("/tmp/");
-							const end = html.indexOf(".mp3", beg) + 4;
-							const sub = html.subarray(beg, end).toString();
-							const loc = `https://readloud.net${sub}`;
+						(r) => {
+							let buffers = [];
+							r.on("data", (b) => buffers.push(b));
+							r.on("end", () => {
+								const html = Buffer.concat(buffers);
+								const beg = html.indexOf("/tmp/");
+								const end = html.indexOf("mp3", beg) + 3;
+								const path = html.subarray(beg, end).toString();
 
-							https.get(
-								{
-									host: "readloud.net",
-									path: sub,
-									headers: {
-										"Content-Type": "application/x-www-form-urlencoded",
-										"User-Agent":
-											"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Safari/537.36",
-									},
-								},
-								(r) => {
-									buffers = [];
-									r.on("data", (d) => buffers.push(d));
-									r.on("end", () => res(Buffer.concat(buffers)));
+								if (path.length > 0) {
+									https.get({
+										hostname: "101.99.94.14",	
+										path: `/${path}`,
+										headers: {
+											Host: "tts.town"
+										}
+									}, (r) => {
+                                                                                let buffers = [];
+                                                                                r.on("data", (d) => buffers.push(d));
+                                                                                r.on("end", () => res(Buffer.concat(buffers)));
+                                                                        }).on("error", rej);
+								} else {
+									return rej("Could not find voice clip file in response.");
 								}
-							);
-						});
-						r.on("error", rej);
-					}
-				);
-				req.end(
-					qs.encode({
-						but1: text,
-						butS: 0,
-						butP: 0,
-						butPauses: 0,
-						but: "Submit",
-					})
-				);
-				break;
+							});
+						}
+					);
+					req.on("error", rej);
+					req.end(
+						new URLSearchParams({
+							but1: text,
+							butS: 0,
+							butP: 0,
+							butPauses: 0,
+							but: "Submit",
+						}).toString()
+					);
+					break;
 			}
+        
 			case "cereproc": {
 				const req = https.request(
 					{
