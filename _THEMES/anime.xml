@@ -16,7 +16,7 @@
 	<background id="street06_bg.swf" name="Street" enable="Y" default="N" is_premium="N" aid="17433" money="0" sharing="0"/>
 	<background id="street07_bg.swf" name="Street" enable="Y" default="N" is_premium="N" aid="17434" money="0" sharing="0"/>
 	<background id="street08_bg.swf" name="Bridge" enable="Y" default="N" is_premium="N" aid="17435" money="0" sharing="0"/>
-	<background id="city09_bg.swf" name="Chuck E Cheese Inside" enable="Y" default="N" is_premium="N" aid="17597" money="0" sharing="0"/>
+	<background id="city09_bg.swf" name="Food store" enable="Y" default="N" is_premium="N" aid="17597" money="0" sharing="0"/>
 	<background id="city10_bg.swf" name="Food store" enable="Y" default="N" is_premium="N" aid="17598" money="0" sharing="0"/>
 	<background id="city11_bg.swf" name="Food store" enable="Y" default="N" is_premium="N" aid="17599" money="0" sharing="0"/>
 	<background id="city12_bg.swf" name="Food store" enable="Y" default="N" is_premium="N" aid="17600" money="0" sharing="0"/>
@@ -305,7 +305,7 @@
 		<file>anime.street08_bg.swf</file>
 	</bg>
 </compositebg>
-	<compositebg id="cbg_city09" name="Chuck E Cheese Inside" enable="Y" default="N" thumb="city09.jpg" display_order="59" is_premium="N" money="0" sharing="0" aid="17614">
+	<compositebg id="cbg_city09" name="Food stall" enable="Y" default="N" thumb="city09.jpg" display_order="59" is_premium="N" money="0" sharing="0" aid="17614">
 	<bg id="cbg_city09_BG5" index="0">
 		<file>anime.city09_bg.swf</file>
 	</bg>
